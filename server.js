@@ -8,12 +8,12 @@ const http = require("http");
 const url = require("url");
 const path = require("path");
 const fs = require("fs");
-const serverFolder = "examples";
+const distPath = "dist";
 const port = process.argv[2] || defaultPort;
 
 http.createServer((request, response) => {
 
-    const uri = `${serverFolder}/${url.parse(request.url).pathname}`;
+    const uri = `${distPath}/${url.parse(request.url).pathname}`;
     let filename = path.join(process.cwd(), uri);
 
     fs.exists(filename,  (exists) => {

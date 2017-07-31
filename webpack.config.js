@@ -1,0 +1,31 @@
+const path = require('path');
+module.exports = {
+  devtool: "source-map",
+  entry: { main: './src/js/main.js' },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: "/dist/",
+    filename: "./js/[name].bundle.js",
+    chunkFilename: "[id].bundle.js"
+  },
+  module: {
+    rules: [{
+      test: /.jsx?$/,
+      include: [
+        path.resolve(__dirname, 'app')
+      ],
+      exclude: [
+        path.resolve(__dirname, 'node_modules'),
+        path.resolve(__dirname, 'bower_components')
+      ],
+      loader: 'babel-loader',
+      query: {
+        presets: ['es2015']
+      }
+    }]
+  },
+  resolve: {
+    extensions: ['.json', '.js', '.jsx', '.css']
+  },
+  devtool: 'source-map'
+};
