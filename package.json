@@ -1,0 +1,20 @@
+{
+  "name": "hackvt-arcgis-demo-apps",
+  "version": "1.0.0",
+  "description": "ArcGis Demonstrations for HackVT",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "arcgis",
+    "hackvt"
+  ],
+  "author": "John Need",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "webpack": "^3.4.1"
+  }
+}
