@@ -9,38 +9,43 @@ const url = require("url");
 const path = require("path");
 const fs = require("fs");
 const distPath = "dist";
+const build = require("./build");
 const port = process.argv[2] || defaultPort;
+async function start() {
+    await build();
+    http.createServer((request, response) => {
 
-http.createServer((request, response) => {
+        const uri = `${distPath}/${url.parse(request.url).pathname}`;
+        let filename = path.join(process.cwd(), uri);
 
-    const uri = `${distPath}/${url.parse(request.url).pathname}`;
-    let filename = path.join(process.cwd(), uri);
-
-    fs.exists(filename,  (exists) => {
-        if (!exists) {
-            response.writeHead(404, {"Content-Type": "text/plain"});
-            response.write("404 Not Found\n");
-            response.end();
-            return;
-        }
-
-        if (fs.statSync(filename).isDirectory()) {
-            filename += "/index.html";
-        }
-
-        fs.readFile(filename, "binary", (err, file) => {
-            if (err) {
-                response.writeHead(500, {"Content-Type": "text/plain"});
-                response.write(`${err}\n`);
+        fs.exists(filename, (exists) => {
+            if (!exists) {
+                response.writeHead(404, { "Content-Type": "text/plain" });
+                response.write("404 Not Found\n");
                 response.end();
                 return;
             }
 
-            response.writeHead(200);
-            response.write(file, "binary");
-            response.end();
-        });
-    });
-}).listen(parseInt(port, 10));
+            if (fs.statSync(filename).isDirectory()) {
+                filename += "/index.html";
+            }
 
-console.log(`Static file server running at\n  => http://localhost:${port} /\nCTRL + C to shutdown`);
+            fs.readFile(filename, "binary", (err, file) => {
+                if (err) {
+                    response.writeHead(500, { "Content-Type": "text/plain" });
+                    response.write(`${err}\n`);
+                    response.end();
+                    return;
+                }
+
+                response.writeHead(200);
+                response.write(file, "binary");
+                response.end();
+            });
+        });
+    }).listen(parseInt(port, 10));
+
+    console.log(`Static file server running at\n  => http://localhost:${port} /\nCTRL + C to shutdown`);
+}
+
+start();
