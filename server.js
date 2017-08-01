@@ -10,6 +10,7 @@ const path = require("path");
 const fs = require("fs");
 const distPath = "dist";
 const build = require("./build");
+var opn = require('opn');
 const port = process.argv[2] || defaultPort;
 async function start() {
     await build();
@@ -46,6 +47,7 @@ async function start() {
     }).listen(parseInt(port, 10));
 
     console.log(`Static file server running at\n  => http://localhost:${port} /\nCTRL + C to shutdown`);
+    opn(`http://localhost:${port}`);
 }
 
 start();

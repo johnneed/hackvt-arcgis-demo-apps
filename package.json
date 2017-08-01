@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "build" : "node build.js",
+    "build": "node build.js",
     "start": "node server.js"
   },
   "keywords": [
@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^4.3.0",
+    "opn": "^5.1.0",
     "recursive-copy": "^2.0.6",
     "webpack": "^3.4.1"
   }
