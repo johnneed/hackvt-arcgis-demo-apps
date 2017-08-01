@@ -29,7 +29,6 @@ const config = {
 const mainConfig = Object.assign({}, config, {
   entry: {
     main: './src/app/app.js'
-
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -38,19 +37,30 @@ const mainConfig = Object.assign({}, config, {
     chunkFilename: "[id].bundle.js"
   },
 });
-const demo_app_1Config = Object.assign({}, config, {
+const simple_map_config = Object.assign({}, config, {
   entry: {
-    demo_app_1: './src/examples/demo-app-1/app/app.js'
+    simple_map: './src/examples/simple-map/app/app.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: "/dist/",
-    filename: "./examples/demo-app-1//js/[name].bundle.js",
+    filename: "./examples/simple-map//js/[name].bundle.js",
+    chunkFilename: "[id].bundle.js"
+  },
+});
+const rendering_layers_config = Object.assign({}, config, {
+  entry: {
+    rendering_layers: './src/examples/rendering-layers/app/app.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: "/dist/",
+    filename: "./examples/rendering-layers//js/[name].bundle.js",
     chunkFilename: "[id].bundle.js"
   },
 });
 
 // Return Array of Configurations
 module.exports = [
-  mainConfig, demo_app_1Config
+  mainConfig, rendering_layers_config, simple_map_config
 ];

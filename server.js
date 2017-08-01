@@ -9,11 +9,9 @@ const url = require("url");
 const path = require("path");
 const fs = require("fs");
 const distPath = "dist";
-const build = require("./build");
-var opn = require('opn');
 const port = process.argv[2] || defaultPort;
-async function start() {
-    await build();
+module.exports = async function start(port) {
+    port = port || defaultPort;
     http.createServer((request, response) => {
 
         const uri = `${distPath}/${url.parse(request.url).pathname}`;
@@ -33,12 +31,12 @@ async function start() {
 
             fs.readFile(filename, "binary", (err, file) => {
                 if (err) {
-                    response.writeHead(500, { "Content-Type": "text/plain" });
+                    response.writeHead(500, { "Content-Type": "text/plain"});
                     response.write(`${err}\n`);
                     response.end();
                     return;
                 }
-
+               
                 response.writeHead(200);
                 response.write(file, "binary");
                 response.end();
@@ -47,7 +45,6 @@ async function start() {
     }).listen(parseInt(port, 10));
 
     console.log(`Static file server running at\n  => http://localhost:${port} /\nCTRL + C to shutdown`);
-    opn(`http://localhost:${port}`);
-}
+};
 
-start();
+ 

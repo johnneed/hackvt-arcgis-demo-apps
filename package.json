@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "build": "node build.js",
-    "start": "node server.js"
+    "start": "node init.js"
   },
   "keywords": [
     "arcgis",
@@ -18,6 +18,11 @@
     "eslint": "^4.3.0",
     "opn": "^5.1.0",
     "recursive-copy": "^2.0.6",
+    "reload": "^2.2.0",
+    "simple-autoreload-server": "^0.2.6",
     "webpack": "^3.4.1"
+  },
+  "dependencies": {
+    "node-watch": "^0.5.5"
   }
 }

@@ -24,13 +24,22 @@
     <header>
         <h1>Hack VT Demo Apps</h1>
     </header>
-    <aside>
-        <ul>
-            <li><a href="./examples/demo-app-1">Demo App 1</a></li>
-        </ul>
-    </aside>
+ 
     <main>
+        <section class="documentation">
         <p>Hello world! This is HTML5 Boilerplate.</p>
+        </section>
+    <section class="example-links">
+        <a href="examples/simple-map" class="demo-app-link simple-map">
+            <img src="./img/simple-map-screen-shot.jpg" alt="simple map demo app screen shot"/>
+            <span>Rendering a simple map in the browser</span>
+        </a>
+          <a href="examples/rendering-layers" class="demo-app-link rendering-layers">
+            <img src="./img/rendering-layers-screen-shot.jpg" alt="rendering layers demo app screen shot"/>
+            <span>Adding layers to a map</span>
+        </a>
+       </section>
+
     </main>
 
 
@@ -40,7 +49,8 @@
     </script>
     <script src="js/plugins.js"></script>
     <script src="js/main.bundle.js"></script>
-
+    <script>!function(){"use strict";var e,t,n,o,a,s=location,i=s.hostname+(s.port?":"+s.port:""),r=setTimeout;s.host===i&&(e=(new Date).getTime(),t=function(){n=new XMLHttpRequest,n.onload=function(){o=this.getResponseHeader("Last-Modified"),a=new Date(o).getTime(),a>e?s.reload():r(t,1e3)},n.open("HEAD",s.href+"?t="+(new Date).getTime(),!0),n.setRequestHeader("pragma","no-cache"),n.send()},r(t,1e3))}();
+</script>
 </body>
 
 </html>

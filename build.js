@@ -3,6 +3,7 @@ const webpackconfig = require("./webpack.config");
 const copy = require('recursive-copy');
 const fs = require('fs');
 const path = require("path");
+ 
 const distPath = "dist";
 const srcPath = 'src';
 const copyOptions = {
@@ -36,12 +37,10 @@ const copyOptions = {
   }
 };
 
-module.exports = async function buildMe() {
+ module.exports = async function buildMe() {
 
   //Remove old code
   console.log('removing dist folder');
-
-  // await rimraf(path.join(process.cwd(), distPath), function (err) { console.error(err); });
   function deleteFolderRecursive(path) {
     var files = [];
     if( fs.existsSync(path) ) {
@@ -65,10 +64,11 @@ module.exports = async function buildMe() {
       console.log("the following errors occured while building the project");
       console.error(err || stats.compilation.errors);
     }
-
   });
-  console.log("Copying assets");
+  
+
   // Copy our assets
+    console.log("Copying assets");
   await copy(srcPath, distPath, copyOptions)
     .on(copy.events.COPY_FILE_START, function (copyOperation) {
       console.info('Copying file ' + copyOperation.src + '...');
@@ -89,4 +89,3 @@ module.exports = async function buildMe() {
   console.log("Project build completed");
 };
 
- 
