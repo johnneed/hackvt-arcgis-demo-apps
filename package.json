@@ -23,6 +23,7 @@
     "webpack": "^3.4.1"
   },
   "dependencies": {
-    "node-watch": "^0.5.5"
+    "node-watch": "^0.5.5",
+    "ws": "^3.1.0"
   }
 }

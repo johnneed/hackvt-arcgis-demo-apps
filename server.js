@@ -10,6 +10,7 @@ const path = require("path");
 const fs = require("fs");
 const distPath = "dist";
 const port = process.argv[2] || defaultPort;
+const refreshScript = '<script>const ws=new WebSocket("ws://localhost:8082");ws.onopen=function(){ws.send("foo")},ws.onmessage=function(o){"reload"===o.data&&location.reload()};</script>';
 module.exports = async function start(port) {
     port = port || defaultPort;
     http.createServer((request, response) => {
@@ -36,7 +37,11 @@ module.exports = async function start(port) {
                     response.end();
                     return;
                 }
-               
+                //insert script for autorefreshing page
+               if(filename.endsWith(".html")){
+                   file = file.replace("</body>",`${refreshScript}</body>`);
+               }
+                   
                 response.writeHead(200);
                 response.write(file, "binary");
                 response.end();

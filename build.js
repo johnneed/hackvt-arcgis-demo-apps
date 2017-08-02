@@ -37,7 +37,7 @@ const copyOptions = {
   }
 };
 
- module.exports = async function buildMe() {
+async function  buildMe() {
 
   //Remove old code
   console.log('removing dist folder');
@@ -89,3 +89,4 @@ const copyOptions = {
   console.log("Project build completed");
 };
 
+ module.exports = buildMe;

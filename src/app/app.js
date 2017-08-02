@@ -1,2 +1,1 @@
- 
-alert('Bonjour!!!!!!!!!!!!!!!!!!!!!');
+console.log('main script');
