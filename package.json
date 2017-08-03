@@ -16,9 +16,11 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^4.3.0",
+    "node-sass": "^4.5.3",
     "opn": "^5.1.0",
     "recursive-copy": "^2.0.6",
     "reload": "^2.2.0",
+    "sass-loader": "^6.0.6",
     "simple-autoreload-server": "^0.2.6",
     "webpack": "^3.4.1"
   },
