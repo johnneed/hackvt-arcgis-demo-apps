@@ -13,28 +13,32 @@
     <link rel="stylesheet" href="simple-map/css/normalize.css">
     <link rel="stylesheet" href="simple-map/css/main.css">
     <link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
-    <script src="simple-map//js/vendor/modernizr-2.8.3.min.js"></script>
     <style>
         html,
         body,
         #viewDiv {
             padding: 0;
             margin: 0;
-            height: 100%;
+            height: calc(100vh - 5em);
             width: 100%;
+        }
+        
+        h1 {
+            height: 2em;
+            margin: 0;
+            padding: 0 1em;
+            box-sizing: border-box;
+            width: 100vw;
+            line-height: 2em;
+            background: #020202;
+            color: #EFEFEF;
         }
     </style>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-    <!-- Add your site or application content here -->
+    <h1>Simple Map Demo</h1>
     <div id="viewDiv"></div>
-    <p>Simple Map Demo App</p>
-    <script src="simple-map/js/simple_map.bundle.js"></script>
     <script src="https://js.arcgis.com/4.4/"></script>
     <script>
         require([
@@ -51,7 +55,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>
