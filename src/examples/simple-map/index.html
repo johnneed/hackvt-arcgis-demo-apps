@@ -10,10 +10,20 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="simple-map/css/normalize.css">
+    <link rel="stylesheet" href="simple-map/css/main.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
+    <script src="simple-map//js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,15 +32,25 @@
         <![endif]-->
 
     <!-- Add your site or application content here -->
+    <div id="viewDiv"></div>
     <p>Simple Map Demo App</p>
-
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="simple-map/js/simple_map.bundle.js"></script>
+    <script src="https://js.arcgis.com/4.4/"></script>
     <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "dojo/domReady!"
+        ], function(Map, MapView) {
+            var map = new Map({
+                basemap: "streets"
+            });
+            var view = new MapView({
+                container: "viewDiv", // Reference to the DOM node that will contain the view
+                map: map // References the map object created in step 3
+            });
+        });
     </script>
-    <script src="js/plugins.js"></script>
-    <script src="js/simple_map.bundle.js"></script>
-
 
 </body>
 
