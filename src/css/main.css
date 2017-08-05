@@ -369,18 +369,8 @@ main>article {
     margin: 1rem 0;
     text-decoration: none;
     color: rgba(25, 25, 25, 1);
-    cursor: pointer;
-    background: rgba(155, 120, 120, 0.1);
-    transition: background-color 0.5s;
 }
-
-.demo-app-link:hover {
-    background: rgba(155, 120, 120, 0.3);
-}
-
-.demo-app-link:visited {
-    color: rgba(25, 25, 25, 1);
-}
+ 
 
 .demo-app-link img, .demo-app-link span {
     max-width: 100%;
@@ -394,7 +384,10 @@ main>article {
     margin-bottom: 1rem;
     box-shadow: 0px 8px 7px -5px rgba(10, 0, 0, 0.5);
 }
-
+.demo-app-title{text-align: center;}
+.demo-app-link a{
+    text-decoration:none;
+}
 .demo-app-title {
     font-size: 1.4rem;
     border-bottom: solid 1px rgba(255, 255, 255, 1);
@@ -402,7 +395,7 @@ main>article {
     box-shadow: 0px 2px 2px -2px rgba(0, 0, 0, .5);
     margin-bottom: 0.5rem;
 }
-
+.demo-app-code-link{font-size: 1.4rem;text-align: center;}
 .demo-app-description {
     font-size: 1rem;
 }
