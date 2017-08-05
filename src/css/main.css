@@ -18,6 +18,17 @@ html {
     line-height: 1.4;
 }
 
+body {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+div, header, section, aside, article, main {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 
 /*
  * Remove text-shadow in selection highlight:
@@ -58,12 +69,7 @@ hr {
  * https://github.com/h5bp/html5-boilerplate/issues/440
  */
 
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
+audio, canvas, iframe, img, svg, video {
     vertical-align: middle;
 }
 
@@ -104,18 +110,34 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-html,
-body {
+html, body {
     font-size: 62.5%;
 }
 
-header {
+body {
+    background: #7FBF18;
+}
+
+#content {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
+    transition: left 0.4s;
+    background: #7FBF18;
+}
+
+#content.is-menu-open {
+    left: -26rem;
+}
+
+header {
+    width: 100%;
     margin: 0;
-    padding: 1.7rem 4rem;
+    padding: 2rem 4rem;
     box-sizing: border-box;
     background: #7FBF18;
-    height: 14rem;
+    height: 9rem;
     font-family: 'Montserrat', sans-serif;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -141,9 +163,9 @@ header {
     -webkit-order: 0;
     -ms-flex-order: 0;
     order: 0;
-    -webkit-flex: 0 1 13rem;
-    -ms-flex: 0 1 13rem;
-    flex: 0 1 13rem;
+    -webkit-flex: 0 1 7rem;
+    -ms-flex: 0 1 7rem;
+    flex: 0 1 7rem;
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
@@ -169,17 +191,17 @@ header {
 
 .small-logo {
     background: black;
-    height: 10rem;
+    height: 5rem;
     display: inline-block;
     vertical-align: middle;
-    width: 13rem;
+    width: 6.4rem;
     text-align: center;
     padding: 0;
 }
 
 .small-logo img {
     background: black;
-    width: 10rem;
+    width: 5rem;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -211,14 +233,16 @@ nav a {
 
 .header-button {
     border: solid 2px rgba(255, 255, 255, 0.9);
-    height: 4rem;
-    line-height: 4rem;
+    line-height: 4.3em;
     padding: 0 2rem;
-    border-radius: 2rem;
+    height: 4.3rem;
+    border-radius: 4rem;
+    transition: background-color 0.5s;
+    background-color: #7FBF18;
 }
 
 .header-button:hover {
-    background: white;
+    background-color: white;
     color: black;
 }
 
@@ -229,7 +253,6 @@ nav a {
     width: 22px;
     height: 16px;
     position: relative;
-    margin: 50px auto;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -239,6 +262,9 @@ nav a {
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #hamburger span {
@@ -264,8 +290,7 @@ nav a {
     top: 0px;
 }
 
-#hamburger span:nth-child(2),
-#hamburger span:nth-child(3) {
+#hamburger span:nth-child(2), #hamburger span:nth-child(3) {
     top: 7px;
 }
 
@@ -300,16 +325,22 @@ nav a {
 }
 
 .big-logo-container {
-    width: 100vw;
+    width: 100%;
     padding: 0;
     /* The image used */
     background-color: black;
     background-image: url("../img/HackVT-logo.svg");
-    height: 35.6rem;
+    height: 26rem;
     background-attachment: fixed;
-    background-position: 50% 30%;
+    background-position: 50% 18rem;
     background-repeat: no-repeat;
     background-size: 60% auto;
+}
+
+#content.is-menu-open .big-logo-container {
+    background-attachment: scroll;
+        background-position: 50% 50%;
+
 }
 
 h1 {
@@ -322,6 +353,7 @@ main {
     width: 100%;
     padding: 0 1rem;
     box-sizing: border-box;
+    background: #7FBF18;
 }
 
 main>article {
@@ -349,8 +381,7 @@ main>article {
     color: rgba(25, 25, 25, 1);
 }
 
-.demo-app-link img,
-.demo-app-link span {
+.demo-app-link img, .demo-app-link span {
     max-width: 100%;
     width: 100%;
     display: block;
@@ -375,9 +406,49 @@ main>article {
     font-size: 1rem;
 }
 
+.mobile-nav {
+    width: 26rem;
+    position: aboslute;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.mobile-nav a {
+    display: block;
+    text-align: left;
+    height: 3.6rem;
+    box-sizing: border-box;
+    line-height: 3.6rem;
+}
+
+.mobile-nav a.header-button {
+    text-align: center;
+    width: 11rem;
+    line-height: 4.3rem;
+    padding: 0 2rem;
+    height: 4.3rem;
+    border-radius: 4rem;
+    margin-top: 1rem;
+}
+
 @media only screen and (min-width: 1024px) {
     header {
         padding: 1.7rem 4rem;
+        height: 14rem;
+    }
+    .left-header-stuff {
+        -webkit-flex: 0 1 13rem;
+        -ms-flex: 0 1 13rem;
+        flex: 0 1 13rem;
+    }
+    .small-logo {
+        height: 10rem;
+        width: 13rem;
+    }
+    .small-logo img {
+        width: 10rem;
     }
     .side-nav {
         display: none;
@@ -403,6 +474,15 @@ main>article {
         position: relative;
         top: 50%;
         transform: translateY(-50%);
+    }
+    .big-logo-container {
+        height: 35.6rem;
+    }
+    #mobile-menu {
+        display: none;
+    }
+    #side-nav {
+        display: none;
     }
 }
 
@@ -444,8 +524,7 @@ main>article {
  * https://www.drupal.org/node/897638
  */
 
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
     clip: auto;
     height: auto;
     margin: 0;
@@ -476,8 +555,7 @@ main>article {
  *    `:before` to contain the top-margins of child elements.
  */
 
-.clearfix:before,
-.clearfix:after {
+.clearfix:before, .clearfix:after {
     content: " ";
     /* 1 */
     display: table;
@@ -517,10 +595,7 @@ main>article {
     }
 }
 
-@media print,
-(-webkit-min-device-pixel-ratio: 1.25),
-(min-resolution: 1.25dppx),
-(min-resolution: 120dpi) {
+@media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
@@ -532,11 +607,7 @@ main>article {
    ========================================================================== */
 
 @media print {
-    *,
-    *:before,
-    *:after,
-    *:first-letter,
-    *:first-line {
+    *, *:before, *:after, *:first-letter, *:first-line {
         background: transparent !important;
         color: #000 !important;
         /* Black prints faster:
@@ -544,8 +615,7 @@ main>article {
         box-shadow: none !important;
         text-shadow: none !important;
     }
-    a,
-    a:visited {
+    a, a:visited {
         text-decoration: underline;
     }
     a[href]:after {
@@ -558,12 +628,10 @@ main>article {
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
+    a[href^="#"]:after, a[href^="javascript:"]:after {
         content: "";
     }
-    pre,
-    blockquote {
+    pre, blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
@@ -574,21 +642,17 @@ main>article {
     thead {
         display: table-header-group;
     }
-    tr,
-    img {
+    tr, img {
         page-break-inside: avoid;
     }
     img {
         max-width: 100% !important;
     }
-    p,
-    h2,
-    h3 {
+    p, h2, h3 {
         orphans: 3;
         widows: 3;
     }
-    h2,
-    h3 {
+    h2, h3 {
         page-break-after: avoid;
     }
 }

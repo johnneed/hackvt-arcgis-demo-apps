@@ -1,5 +1,7 @@
-$(document).ready(function(){
-	$('#hamburger').click(function(){
+$(document).ready(function () {
+	var mobileMenu = $('#content');
+	$('#hamburger').click(function () {
 		$(this).toggleClass('open');
+		mobileMenu.toggleClass('is-menu-open');
 	});
 });
