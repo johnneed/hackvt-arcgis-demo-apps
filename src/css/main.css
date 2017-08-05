@@ -332,15 +332,14 @@ nav a {
     background-image: url("../img/HackVT-logo.svg");
     height: 26rem;
     background-attachment: fixed;
-    background-position: 50% 18rem;
+    background-position: 50% 26%;
     background-repeat: no-repeat;
     background-size: 60% auto;
 }
 
 #content.is-menu-open .big-logo-container {
     background-attachment: scroll;
-        background-position: 50% 50%;
-
+    background-position: 50% 50%;
 }
 
 h1 {
@@ -433,59 +432,6 @@ main>article {
     margin-top: 1rem;
 }
 
-@media only screen and (min-width: 1024px) {
-    header {
-        padding: 1.7rem 4rem;
-        height: 14rem;
-    }
-    .left-header-stuff {
-        -webkit-flex: 0 1 13rem;
-        -ms-flex: 0 1 13rem;
-        flex: 0 1 13rem;
-    }
-    .small-logo {
-        height: 10rem;
-        width: 13rem;
-    }
-    .small-logo img {
-        width: 10rem;
-    }
-    .side-nav {
-        display: none;
-    }
-    .header-nav {
-        display: block;
-    }
-    #hamburger {
-        display: none;
-    }
-    .small-logo {
-        background: black;
-        height: 10rem;
-        display: inline-block;
-        vertical-align: middle;
-        width: 13rem;
-        text-align: center;
-        padding: 0;
-    }
-    .small-logo img {
-        background: black;
-        width: 10rem;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .big-logo-container {
-        height: 35.6rem;
-    }
-    #mobile-menu {
-        display: none;
-    }
-    #side-nav {
-        display: none;
-    }
-}
-
 
 /* ==========================================================================
    Helper classes
@@ -566,32 +512,77 @@ main>article {
     clear: both;
 }
 
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
 @media only screen and (min-width: 768px) {
     /* Style adjustments for viewports that meet the condition */
     .example-links {
         display: grid;
-        grid-template-columns: repeat(3, calc(33.33% - 0.2rem));
+        grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
         grid-gap: 0.3rem;
     }
-    .demo-app-link:nth-child(1) {
-        grid-column: 1;
-        grid-row: 1;
+    .demo-app-link {
+        grid-column-start: auto;
+        grid-row-start: auto;
     }
-    .demo-app-link:nth-child(2) {
-        grid-column: 2;
-        grid-row: 1;
+}
+
+@media only screen and (min-width: 1024px) {
+    header {
+        padding: 1.7rem 4rem;
+        height: 14rem;
     }
-    .demo-app-link:nth-child(3) {
-        grid-column: 3;
-        grid-row: 1;
+    .left-header-stuff {
+        -webkit-flex: 0 1 13rem;
+        -ms-flex: 0 1 13rem;
+        flex: 0 1 13rem;
+    }
+    .small-logo {
+        height: 10rem;
+        width: 13rem;
+    }
+    .small-logo img {
+        width: 10rem;
+    }
+    .side-nav {
+        display: none;
+    }
+    .header-nav {
+        display: block;
+    }
+    #hamburger {
+        display: none;
+    }
+    .small-logo {
+        background: black;
+        height: 10rem;
+        display: inline-block;
+        vertical-align: middle;
+        width: 13rem;
+        text-align: center;
+        padding: 0;
+    }
+    .small-logo img {
+        background: black;
+        width: 10rem;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .big-logo-container {
+        height: 35.6rem;
+        background-position: 50% 25rem;
+    }
+    #mobile-menu {
+        display: none;
+    }
+    #side-nav {
+        display: none;
+    }
+    .example-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-gap: 0.3rem;
     }
 }
 
