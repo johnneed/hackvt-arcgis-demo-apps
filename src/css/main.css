@@ -115,16 +115,19 @@ html, body {
 }
 
 body {
-    background: #7FBF18;
+    background: #FFF;
+    height: 100vh;
 }
-
+body.is-menu-open{
+    overflow: hidden;
+}
 #content {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     transition: left 0.4s;
-    background: #7FBF18;
+    background: #FFF;
 }
 
 #content.is-menu-open {
@@ -134,7 +137,7 @@ body {
 header {
     width: 100%;
     margin: 0;
-    padding: 2rem 4rem;
+    padding: 2rem 2rem;
     box-sizing: border-box;
     background: #7FBF18;
     height: 9rem;
@@ -233,7 +236,7 @@ nav a {
 
 .header-button {
     border: solid 2px rgba(255, 255, 255, 0.9);
-    line-height: 4.3em;
+    line-height: 4.3rem;
     padding: 0 2rem;
     height: 4.3rem;
     border-radius: 4rem;
@@ -323,23 +326,22 @@ nav a {
     width: 0%;
     left: 50%;
 }
-
+ 
 .big-logo-container {
     width: 100%;
     padding: 0;
-    /* The image used */
     background-color: black;
-    background-image: url("../img/HackVT-logo.svg");
-    height: 26rem;
+    background-image: url(../img/HackVT-logo.svg);
+    height: 14.8rem;
     background-attachment: fixed;
-    background-position: 50% 26%;
+    background-position: 50% 13.4rem;
     background-repeat: no-repeat;
-    background-size: 60% auto;
+    background-size: auto 6rem;
 }
 
 #content.is-menu-open .big-logo-container {
     background-attachment: scroll;
-    background-position: 50% 50%;
+    background-position: 50% 4.4rem;
 }
 
 h1 {
@@ -352,7 +354,7 @@ main {
     width: 100%;
     padding: 0 1rem;
     box-sizing: border-box;
-    background: #7FBF18;
+    background: #FFF;
 }
 
 main>article {
@@ -407,11 +409,13 @@ main>article {
 
 .mobile-nav {
     width: 26rem;
+    height: 100vh;
     position: aboslute;
     top: 0;
     right: 0;
     padding: 2rem;
     box-sizing: border-box;
+       background: #7FBF18;
 }
 
 .mobile-nav a {
@@ -524,6 +528,18 @@ main>article {
         grid-column-start: auto;
         grid-row-start: auto;
     }
+
+.big-logo-container {
+     
+    height: 26rem;
+    background-position: 50% 17rem;
+    background-size: auto 10rem;
+}
+
+#content.is-menu-open .big-logo-container {
+    background-position: 50% 8rem;
+}
+
 }
 
 @media only screen and (min-width: 1024px) {
@@ -570,7 +586,9 @@ main>article {
     }
     .big-logo-container {
         height: 35.6rem;
-        background-position: 50% 25rem;
+        background-position: 50% 22.8rem;
+            background-size: auto 16rem;
+
     }
     #mobile-menu {
         display: none;
