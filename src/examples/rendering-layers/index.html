@@ -42,26 +42,23 @@
     <script src="https://js.arcgis.com/4.4/"></script>
     <script>
         require([
-            "esri/config",
+            "esri/layers/MapImageLayer",
+            "esri/Basemap",
             "esri/Map",
-            "esri/layers/WMSLayer",
-            "esri/layers/TileLayer",
+  
             "esri/views/MapView",
-
             "dojo/domReady!"
-        ], function(esriConfig, Map, WMSLayer, TileLayer, MapView) {
-            esriConfig.request.corsEnabledServers.push("anrmaps.vermont.go");
-            esriConfig.request.proxyUrl = "http://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetCapabilities&service=WMS";
-            var mylayer = new TileLayer({
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/MAP_VCGI_USTOPO_SP_CACHE/ImageServer"
-            });
-            var mylayer2 = new WMSLayer({
-                url: "https://anrmaps.vermont.gov/arcgis/services/Open_Data/OPENDATA_ANR_WATER_SP_NOCACHE_v2/MapServer/WMSServer?request=GetCapabilities&service=WMS"
-            });
+        ], function(MapImageLayer, BaseMap, Map,   MapView) {
+          
+            var baseLayer = new MapImageLayer(
+                {url:"http://maps.vcgi.vermont.gov/arcgis/rest/services/VCGI_services/VCGI_BASEMAP_WM_v2/MapServer"}
+            );
+ 
             var map = new Map({
-                // basemap: "streets",
-                layers: [mylayer, mylayer2] // layers can be added as an array to the map's constructor
+                basemap:"oceans",
+                 layers: [baseLayer] // layers can be added as an array to the map's constructor
             });
+
             var view = new MapView({
                 container: "viewDiv", // Reference to the DOM node that will contain the view
                 map: map // References the map object created in step 3
