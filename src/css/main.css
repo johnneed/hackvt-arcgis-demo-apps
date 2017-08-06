@@ -478,8 +478,9 @@ main>article {
 
 ul {
     list-style: none;
+    padding: 0;
 }
-
+ ol{padding: 2rem;}
 li {
     font-size: 1.4rem;
     margin: 1rem 0;
@@ -598,6 +599,18 @@ li > a {vertical-align: middle;}
 
 @media only screen and (min-width: 768px) {
     /* Style adjustments for viewports that meet the condition */
+
+
+
+ul {
+    padding-left: 2rem;
+}
+ol{
+    padding-left: 3rem;
+}
+main {
+    padding: 0 3rem;
+}
     .example-links {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -629,6 +642,9 @@ li > a {vertical-align: middle;}
 }
 
 @media only screen and (min-width: 1024px) {
+    main {
+    padding: 0 4rem;
+}
     header {
         padding: 1.7rem 4rem;
         height: 14rem;
