@@ -12,7 +12,8 @@
     <!-- Place favicon.ico in the root directory -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link href="css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" media="all" href="css/main.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -69,25 +70,36 @@
                     We strongly reccomend that you <strong>familiarize yourself with these data and API's before arriving at the event</strong>.
                     To facilitate this we've provided the following links to training materials and sample applications below.</p>
                 <p>Additionaly, you may also choose to use additional data sets, APIs, plugins or scripts of your own.</p>
-
+            </article>
+            <article>
+                <h2>API's, SDK's, Documentation and Examples from ArcGIS</h2>
+                <ul>
+                    <li><i class="mdi mdi-language-javascript"></i><a href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a></li>
+                    <li><i class="mdi mdi-apple-ios"></i><a href="https://developers.arcgis.com/android/">ArcGIS Runtime SDK for iOS</a></li>
+                    <li><i class="mdi mdi-android"></i><a href="https://developers.arcgis.com/ios/">ArcGIS Runtime SDK for Android</a></li>
+                    <li><i class="mdi mdi-microsoft"></i><a href="https://developers.arcgis.com/net/latest/">ArcGIS Runtime SDK for .NET</a></li>
+                    <li><i class="mdi mdi-coffee"></i><a href="https://developers.arcgis.com/java/latest/">rAcGIS Runtime SDK for Java</a></li>
+                    <li><i class="icon-qt"></i><a href="https://developers.arcgis.com/qt/latest/">ArcGIS Runtime SDK for Qt</a></li>
+                    <li><i class="mdi mdi-language-python"></i><a href="https://developers.arcgis.com/python/">ArcGIS API for Python</a></li>
+                </ul>
             </article>
             <article class="upcoming talks">
                 <h2>Live Talks and Trainings</h2>
                 <div class="arcgis-talk">
                     <h4>Vermont Code Camp</h4>
-                        <p>When : Saturday, September 16, 2017</p>
-                        <p>Where : Champlain College, Burlington Vermont</p>
-                        <p><a href="https://www.vtcodecamp.org/">More Info Here</a></p>
-                    </div>
-                             <div class="arcgis-talk">
+                    <p>When : Saturday, September 16, 2017</p>
+                    <p>Where : Champlain College, Burlington Vermont</p>
+                    <p><a href="https://www.vtcodecamp.org/">More Info Here</a></p>
+                </div>
+                <div class="arcgis-talk">
                     <h4>BurlingtonJS Meetup</h4>
-                        <p>When : Monday, October  16, 2017</p>
-                        <p>Where : Champlain College, Burlington Vermont</p>
-                        <p><a href="https://www.meetup.com/VTCode/events/242191064/">More Info Here</a></p>
-                    </div>
-                 </article>
+                    <p>When : Monday, October 16, 2017</p>
+                    <p>Where : Champlain College, Burlington Vermont</p>
+                    <p><a href="https://www.meetup.com/VTCode/events/242191064/">More Info Here</a></p>
+                </div>
+            </article>
             <article class="training-materials-2016">
-                <h2>Learn Yourself some ArcGIS for Greater Good</h2>
+                <h2>Training Materials from the Vermont Center for Geographic Information</h2>
                 <h4>2016 ArcGIS Training Manual</h4>
                 <ol>
                     <li><a href="http://vcgi.vermont.gov/sites/vcgi/files/training/chapter_1.pdf" target="_blank">Chapter 1: Mapping and Digital Data Fundamentals</a>                        (PDF, 343 KB)</li>
@@ -113,95 +125,99 @@
                     <li><a href="http://vcgi.vermont.gov/sites/vcgi/files/training/Arc10Manual_VT_2016.pdf" target="_blank">Intro to ArcGIS 10.x Manual</a>                        (2016) (PDF, 7 MB)</li>
                     <li><a href="http://qgis.org/en/site/forusers/trainingmaterial/index.html#english" target="_blank">Link to Online Training materials posted at the QGIS site (try searching Youtube as well!)</a></li>
                 </ul>
-        
+
                 <h4>Software</h4>
                 <ul>
                     <li><a href="http://www.qgis.org/en/site">QGIS : A Free and Open Source Geographic Information System</a>                        : Documentation for QGIS can be found <a href="http://www.qgis.org/en/docs/index.html">here</a>.</li>
                     <li><a href="http://appsforms.esri.com/products/download/">Arc Explorer from esri.  (Requires account creation)</a></li>
                 </ul>
                 <h4>Videos</h4>
-                <ul><li><a href="https://www.youtube.com/playlist?list=PLMg5UHByMftdglMUWsqMp22nEtF5jqG1P" target="_blank">VT Open Geodata Portal Videos</a></li></ul>
+                <ul>
+                    <li><a href="https://www.youtube.com/playlist?list=PLMg5UHByMftdglMUWsqMp22nEtF5jqG1P" target="_blank">VT Open Geodata Portal Videos</a></li>
+                </ul>
             </article>
-            <section >
+            
+            <section>
                 <h2>Here's some demontraion Apps, in case you really like looking at other people's code</h2>
-                            <div class="example-links">
+                <div class="example-links">
 
-                <article class="demo-app-link base-map">
-                    <a href="examples/base-map" target="_blank"><img src="./img/base-map-screen-shot.png" alt="base map demo app screen shot" /></a>
-                    <span class="demo-app-title"> <a  href="examples/base-map">Rendering a base map in the browser</a></span>
-                    <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/simple-map"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                    <div class="demo-app-description">
-                        <p>A simple base-map example</p>
-                    </div>
-                </article>
-                <article class="demo-app-link rendering-layers">
-                    <a href="examples/rendering-layers" target="_blank"><img src="./img/rendering-layers-screen-shot.png" alt="simple map demo app screen shot" /></a>
-                    <span class="demo-app-title"> <a  href="examples/rendering-layers">Rendering Layers on Base Map</a></span>
-                    <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/rendering-layers"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                    <div class="demo-app-description">
-                        <p>Using Vermont GIS data and layers</p>
-                    </div>
-                </article>
-                <article class="demo-app-link custom-pins">
-                    <a href="examples/custom-pins" target="_blank"><img src="./img/custom-pins-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
-                    <span class="demo-app-title"> <a  href="examples/custom-pins">Rendering a simple map in the browser</a></span>
-                    <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/custom-pins" target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                    <div class="demo-app-description">
-                        <p>Twee Truffaut narwhal Austin banh mi freegan cornhole try-hard four loko whatever 90's pug Wes Anderson
-                            sartorial Intelligentsia Williamsburg keytar </p>
-                        <p>Photo booth lomo vinyl you probably haven't heard of them synth literally fanny pack bitters meggings
-                            bespoke butcher Pitchfork 3 wolf moon 8-bit distillery </p>
-                        <p>Keffiyeh retro authentic XOXO pour-over crucifix.</p>
-                    </div>
-                </article>
-                <article class="demo-app-link base-map">
-                    <a href="examples/simple-map" target="_blank"><img src="./img/simple-map-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
-                    <span class="demo-app-title"> <a  href="examples/simple-map">Rendering a base map in the browser</a></span>
-                    <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/simple-map"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                    <div class="demo-app-description">
-                        <p>Brunch hashtag street art VHS sriracha banjo Godard ennui locavore plaid mixtape Portland paleo tofu
-                            YOLO High Life viral Neutra Marfa mustache. </p>
-                        <p>Twee Truffaut narwhal Austin banh mi freegan cornhole try-hard four loko whatever 90's pug Wes Anderson
-                            sartorial Intelligentsia Williamsburg keytar. </p>
-                        <p>Photo booth lomo vinyl you probably haven't heard of them synth literally fanny pack bitters meggings
-                            bespoke butcher Pitchfork 3 wolf moon 8-bit distillery. </p>
-                    </div>
-                </article>
-                <article class="demo-app-link rendering-layers">
-                    <a href="examples/rendering-layers" target="_blank"><img src="./img/rendering-layers-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
-                    <span class="demo-app-title"> <a  href="examples/rendering-layers">Rendering a simple map in the browser</a></span>
-                    <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/rendering-layers"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                    <div class="demo-app-description">
-                        <p>Sustainable flexitarian fap blog Odd Future Echo Park pickled gentrify swag Tonx occupy art party
-                            lo-fi cray fingerstache Bushwick polaroid kale chips fashion axe roof party chia small batch
-                            chambray hella before they sold out hoodie
-                        </p>
-                        <p>Pork belly salvia aesthetic jean shorts flannel Thundercats Pinterest craft beer heirloom stumptown
-                            wayfarers put a bird on it ethical squid biodiesel semiotics kitsch seitan dreamcatcher Brooklyn
-                            DIY tattooed church-key Helvetica PBR&B selvage kogi letterpress Blue Bottle Cosby sweater drinking
-                            vinegar mumblecore American Apparel beard forage tousled +1 McSweeney's Etsy wolf typewriter
-                            selfies cliche readymade Tumblr normcore next level Kickstarter master
-                        </p>
-                        <p>Cleanse shabby chic organic ugh tote bag Schlitz PBR cred disrupt gastropub umami scenester yr direct
-                            trade food truck mlkshk vegan meh trust fund leggings skateboard messenger bag artisan slow-carb
-                            irony farm-to-table deep v iPhone bicycle rights post-ironic pop-up asymmetrical quinoa Vice
-                            raw denim Shoreditch gluten-free fixie single-origin coffee Carles chillwave Banksy.
-                        </p>
+                    <article class="demo-app-link base-map">
+                        <a href="examples/base-map" target="_blank"><img src="./img/base-map-screen-shot.png" alt="base map demo app screen shot" /></a>
+                        <span class="demo-app-title"> <a  href="examples/base-map">Rendering a base map in the browser</a></span>
+                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/simple-map"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                        <div class="demo-app-description">
+                            <p>A simple base-map example</p>
+                        </div>
+                    </article>
+                    <article class="demo-app-link rendering-layers">
+                        <a href="examples/rendering-layers" target="_blank"><img src="./img/rendering-layers-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
+                        <span class="demo-app-title"> <a  href="examples/rendering-layers">Using Layers and VT GIS Data</a></span>
+                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/rendering-layers"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                        <div class="demo-app-description">
+                            <p>Using Vermont GIS data and layers</p>
+                        </div>
+                    </article>
+                    <article class="demo-app-link custom-pins">
+                        <a href="examples/custom-pins" target="_blank"><img src="./img/custom-pins-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
+                        <span class="demo-app-title"> <a  href="examples/custom-pins">Rendering a simple map in the browser</a></span>
+                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/custom-pins" target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                        <div class="demo-app-description">
+                            <p>Twee Truffaut narwhal Austin banh mi freegan cornhole try-hard four loko whatever 90's pug Wes
+                                Anderson sartorial Intelligentsia Williamsburg keytar </p>
+                            <p>Photo booth lomo vinyl you probably haven't heard of them synth literally fanny pack bitters
+                                meggings bespoke butcher Pitchfork 3 wolf moon 8-bit distillery </p>
+                            <p>Keffiyeh retro authentic XOXO pour-over crucifix.</p>
+                        </div>
+                    </article>
+                    <article class="demo-app-link base-map">
+                        <a href="examples/simple-map" target="_blank"><img src="./img/simple-map-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
+                        <span class="demo-app-title"> <a  href="examples/simple-map">Rendering a base map in the browser</a></span>
+                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/simple-map"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                        <div class="demo-app-description">
+                            <p>Brunch hashtag street art VHS sriracha banjo Godard ennui locavore plaid mixtape Portland paleo
+                                tofu YOLO High Life viral Neutra Marfa mustache. </p>
+                            <p>Twee Truffaut narwhal Austin banh mi freegan cornhole try-hard four loko whatever 90's pug Wes
+                                Anderson sartorial Intelligentsia Williamsburg keytar. </p>
+                            <p>Photo booth lomo vinyl you probably haven't heard of them synth literally fanny pack bitters
+                                meggings bespoke butcher Pitchfork 3 wolf moon 8-bit distillery. </p>
+                        </div>
+                    </article>
+                    <article class="demo-app-link rendering-layers">
+                        <a href="examples/rendering-layers" target="_blank"><img src="./img/rendering-layers-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
+                        <span class="demo-app-title"> <a  href="examples/rendering-layers">Rendering a simple map in the browser</a></span>
+                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/rendering-layers"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                        <div class="demo-app-description">
+                            <p>Sustainable flexitarian fap blog Odd Future Echo Park pickled gentrify swag Tonx occupy art party
+                                lo-fi cray fingerstache Bushwick polaroid kale chips fashion axe roof party chia small batch
+                                chambray hella before they sold out hoodie
+                            </p>
+                            <p>Pork belly salvia aesthetic jean shorts flannel Thundercats Pinterest craft beer heirloom stumptown
+                                wayfarers put a bird on it ethical squid biodiesel semiotics kitsch seitan dreamcatcher Brooklyn
+                                DIY tattooed church-key Helvetica PBR&B selvage kogi letterpress Blue Bottle Cosby sweater
+                                drinking vinegar mumblecore American Apparel beard forage tousled +1 McSweeney's Etsy wolf
+                                typewriter selfies cliche readymade Tumblr normcore next level Kickstarter master
+                            </p>
+                            <p>Cleanse shabby chic organic ugh tote bag Schlitz PBR cred disrupt gastropub umami scenester yr
+                                direct trade food truck mlkshk vegan meh trust fund leggings skateboard messenger bag artisan
+                                slow-carb irony farm-to-table deep v iPhone bicycle rights post-ironic pop-up asymmetrical
+                                quinoa Vice raw denim Shoreditch gluten-free fixie single-origin coffee Carles chillwave
+                                Banksy.
+                            </p>
 
-                    </div>
-                </article>
-                <article class="demo-app-link custom-pins">
-                    <a href="examples/custom-pins" target="_blank"><img src="./img/custom-pins-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
-                    <span class="demo-app-title"> <a  href="examples/custom-pins">Rendering a simple map in the browser</a></span>
-                    <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/custom-pins" target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                    <div class="demo-app-description">
-                        <p>Twee Truffaut narwhal Austin banh mi freegan cornhole try-hard four loko whatever 90's pug Wes Anderson
-                            sartorial Intelligentsia Williamsburg keytar </p>
-                        <p>Photo booth lomo vinyl you probably haven't heard of them synth literally fanny pack bitters meggings
-                            bespoke butcher Pitchfork 3 wolf moon 8-bit distillery </p>
-                        <p>Keffiyeh retro authentic XOXO pour-over crucifix.</p>
-                    </div>
-                </article>
+                        </div>
+                    </article>
+                    <article class="demo-app-link custom-pins">
+                        <a href="examples/custom-pins" target="_blank"><img src="./img/custom-pins-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
+                        <span class="demo-app-title"> <a  href="examples/custom-pins">Rendering a simple map in the browser</a></span>
+                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/custom-pins" target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                        <div class="demo-app-description">
+                            <p>Twee Truffaut narwhal Austin banh mi freegan cornhole try-hard four loko whatever 90's pug Wes
+                                Anderson sartorial Intelligentsia Williamsburg keytar </p>
+                            <p>Photo booth lomo vinyl you probably haven't heard of them synth literally fanny pack bitters
+                                meggings bespoke butcher Pitchfork 3 wolf moon 8-bit distillery </p>
+                            <p>Keffiyeh retro authentic XOXO pour-over crucifix.</p>
+                        </div>
+                    </article>
                 </div>
             </section>
         </main>
