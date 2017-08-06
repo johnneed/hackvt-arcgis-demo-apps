@@ -45,10 +45,9 @@
             "esri/layers/MapImageLayer",
             "esri/Basemap",
             "esri/Map",
-  
             "esri/views/MapView",
             "dojo/domReady!"
-        ], function(MapImageLayer, BaseMap, Map,   MapView) {
+        ], function(MapImageLayer, BaseMap, Map, MapView) {
           
             var baseLayer = new MapImageLayer(
                 {url:"http://maps.vcgi.vermont.gov/arcgis/rest/services/VCGI_services/VCGI_BASEMAP_WM_v2/MapServer"}
@@ -59,10 +58,24 @@
                  layers: [baseLayer] // layers can be added as an array to the map's constructor
             });
 
+            
+
             var view = new MapView({
                 container: "viewDiv", // Reference to the DOM node that will contain the view
-                map: map // References the map object created in step 3
+                map: map, // References the map object created in step 3
+                //Size the MapView to only show Vermont
+                extent: {
+                    "xmin": -8385168.949407466,
+                    "ymin": 5387935.44374791,
+                    "xmax": -7747200.434209026,
+                    "ymax": 5642139.985168016,
+                    "spatialReference": {
+                    "wkid": 102100,
+                    "latestWkid": 3857
+                    }
+                }
             });
+
         });
     </script>
 </body>
