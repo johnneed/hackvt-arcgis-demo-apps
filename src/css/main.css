@@ -470,9 +470,10 @@ main>article {
 .arcgis-talk {
     border: solid 1px #AAA;
     padding: 2rem;
-    border-radius: .4rem;
+    border-radius: .2rem;
     margin: 0 1rem 1rem 1rem;
     background: rgba(127, 191, 24, 0.5);
+    box-shadow: 0px 8px 7px -5px rgba(10, 0, 0, 0.5)
 }
 
 ul {
@@ -487,19 +488,31 @@ li {
 .icon-qt {
     display: inline-block;
     height: 1.4rem;
-    width: 1.8rem;
+    width: 2.6rem;
     background-color: white;
     background-image: url(../img/qt-logo.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    margin-right: 0.6rem;
+    margin-right: 1rem;
     vertical-align: middle;
 }
-
+.icon-java {
+    display: inline-block;
+    height: 2.4rem;
+    width: 2.6rem;
+    background-color: white;
+    background-image: url(../img/java-logo.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 1rem;
+    vertical-align: middle;
+}
 li>i.mdi {
     margin-right: 1rem;
     font-size: 2.2rem;
     vertical-align: middle;
+    width: 2.6rem;
+    display: inline-block;
 }
 li > a {vertical-align: middle;}
 
@@ -674,6 +687,14 @@ li > a {vertical-align: middle;}
         grid-template-rows: auto;
         grid-gap: 0.3rem;
     }
+
+        .live-events-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-gap: 0.3rem;
+    }
+   
 }
 
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
