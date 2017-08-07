@@ -26,12 +26,22 @@ body {
     font-size: 1.2rem;
 }
 
-div, header, section, aside, article, main {
+div,
+header,
+section,
+aside,
+article,
+main {
     box-sizing: border-box;
     margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: rgb(133, 171, 157);
 }
 
@@ -49,8 +59,7 @@ h3 {
 
 h4 {
     font-size: 1.8rem;
-        color: black;
-
+    color: black;
 }
 
 h5 {
@@ -102,7 +111,12 @@ hr {
  * https://github.com/h5bp/html5-boilerplate/issues/440
  */
 
-audio, canvas, iframe, img, svg, video {
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
     vertical-align: middle;
 }
 
@@ -143,7 +157,8 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-html, body {
+html,
+body {
     font-size: 62.5%;
 }
 
@@ -328,7 +343,8 @@ nav a {
     top: 0px;
 }
 
-#hamburger span:nth-child(2), #hamburger span:nth-child(3) {
+#hamburger span:nth-child(2),
+#hamburger span:nth-child(3) {
     top: 7px;
 }
 
@@ -386,7 +402,7 @@ main {
     background: #FFF;
 }
 
-main>article {
+article {
     font-size: 1.4rem;
 }
 
@@ -400,7 +416,8 @@ main>article {
     color: rgba(25, 25, 25, 1);
 }
 
-.demo-app-link img, .demo-app-link span {
+.demo-app-link img,
+.demo-app-link span {
     max-width: 100%;
     width: 100%;
     display: block;
@@ -435,7 +452,7 @@ main>article {
 }
 
 .demo-app-description {
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
 .mobile-nav {
@@ -480,7 +497,11 @@ ul {
     list-style: none;
     padding: 0;
 }
- ol{padding: 2rem;}
+
+ol {
+    padding: 2rem;
+}
+
 li {
     font-size: 1.4rem;
     margin: 1rem 0;
@@ -497,6 +518,7 @@ li {
     margin-right: 1rem;
     vertical-align: middle;
 }
+
 .icon-java {
     display: inline-block;
     height: 2.4rem;
@@ -508,6 +530,7 @@ li {
     margin-right: 1rem;
     vertical-align: middle;
 }
+
 li>i.mdi {
     margin-right: 1rem;
     font-size: 2.2rem;
@@ -515,7 +538,10 @@ li>i.mdi {
     width: 2.6rem;
     display: inline-block;
 }
-li > a {vertical-align: middle;}
+
+li>a {
+    vertical-align: middle;
+}
 
 
 /* ==========================================================================
@@ -555,7 +581,8 @@ li > a {vertical-align: middle;}
  * https://www.drupal.org/node/897638
  */
 
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
     clip: auto;
     height: auto;
     margin: 0;
@@ -586,7 +613,8 @@ li > a {vertical-align: middle;}
  *    `:before` to contain the top-margins of child elements.
  */
 
-.clearfix:before, .clearfix:after {
+.clearfix:before,
+.clearfix:after {
     content: " ";
     /* 1 */
     display: table;
@@ -599,18 +627,15 @@ li > a {vertical-align: middle;}
 
 @media only screen and (min-width: 768px) {
     /* Style adjustments for viewports that meet the condition */
-
-
-
-ul {
-    padding-left: 2rem;
-}
-ol{
-    padding-left: 3rem;
-}
-main {
-    padding: 0 3rem;
-}
+    ul {
+        padding-left: 2rem;
+    }
+    ol {
+        padding-left: 3rem;
+    }
+    main {
+        padding: 0 3rem;
+    }
     .example-links {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -643,8 +668,8 @@ main {
 
 @media only screen and (min-width: 1024px) {
     main {
-    padding: 0 4rem;
-}
+        padding: 0 4rem;
+    }
     header {
         padding: 1.7rem 4rem;
         height: 14rem;
@@ -703,17 +728,18 @@ main {
         grid-template-rows: auto;
         grid-gap: 0.3rem;
     }
-
-        .live-events-container {
+    .live-events-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
         grid-gap: 0.3rem;
     }
-   
 }
 
-@media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
@@ -725,7 +751,11 @@ main {
    ========================================================================== */
 
 @media print {
-    *, *:before, *:after, *:first-letter, *:first-line {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
         background: transparent !important;
         color: #000 !important;
         /* Black prints faster:
@@ -733,7 +763,8 @@ main {
         box-shadow: none !important;
         text-shadow: none !important;
     }
-    a, a:visited {
+    a,
+    a:visited {
         text-decoration: underline;
     }
     a[href]:after {
@@ -746,10 +777,12 @@ main {
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-    a[href^="#"]:after, a[href^="javascript:"]:after {
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
         content: "";
     }
-    pre, blockquote {
+    pre,
+    blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
@@ -760,17 +793,21 @@ main {
     thead {
         display: table-header-group;
     }
-    tr, img {
+    tr,
+    img {
         page-break-inside: avoid;
     }
     img {
         max-width: 100% !important;
     }
-    p, h2, h3 {
+    p,
+    h2,
+    h3 {
         orphans: 3;
         widows: 3;
     }
-    h2, h3 {
+    h2,
+    h3 {
         page-break-after: avoid;
     }
 }
