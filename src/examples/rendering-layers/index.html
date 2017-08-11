@@ -48,17 +48,22 @@
             "esri/views/MapView",
             "dojo/domReady!"
         ], function(MapImageLayer, BaseMap, Map, MapView) {
-          
-            var baseLayer = new MapImageLayer(
-                {url:"http://maps.vcgi.vermont.gov/arcgis/rest/services/VCGI_services/VCGI_BASEMAP_WM_v2/MapServer"}
-            );
- 
-            var map = new Map({
-                basemap:"oceans",
-                 layers: [baseLayer] // layers can be added as an array to the map's constructor
+
+            var baseLayer = new MapImageLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/VCGI_services/VCGI_BASEMAP_WM_v2/MapServer"
             });
 
-            
+            var airportLayer = new MapImageLayer({
+                url: "http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/29/query?outFields=*&where=1%3D1"
+            });
+
+
+            var map = new Map({
+                basemap: "topo",
+                layers: [airportLayer] // layers can be added as an array to the map's constructor
+            });
+
+
 
             var view = new MapView({
                 container: "viewDiv", // Reference to the DOM node that will contain the view
@@ -70,8 +75,8 @@
                     "xmax": -7747200.434209026,
                     "ymax": 5642139.985168016,
                     "spatialReference": {
-                    "wkid": 102100,
-                    "latestWkid": 3857
+                        "wkid": 102100,
+                        "latestWkid": 3857
                     }
                 }
             });
