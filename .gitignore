@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/osx,vim,kate,node,adobe,linux,emacs,windows,webstorm,netbeans,notepadpp,sublimetext,visualstudio,visualstudiocode
 
+.vscode
+
 ### Adobe ###
 # Adobe Source Files
 *.psd
@@ -42,7 +44,7 @@ tramp
 
 # cask packages
 .cask/
-dist/
+ 
 
 # Flycheck
 flycheck_*.el
