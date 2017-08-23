@@ -11,9 +11,31 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="simple-map/css/normalize.css">
+    <link rel="stylesheet" href="simple-map/css/main.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.21/esri/css/esri.css">
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: calc(100vh - 5em);
+            width: 100%;
+        }
+        
+        h1 {
+            height: 2em;
+            margin: 0;
+            padding: 0 1em;
+            box-sizing: border-box;
+            width: 100vw;
+            line-height: 2em;
+            background: #020202;
+            color: #EFEFEF;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,14 +45,41 @@
 
     <!-- Add your site or application content here -->
     <p>Custom Pins Demo App</p>
-
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <div id="viewDiv"></div>
+    <script src="https://js.arcgis.com/3.21/"></script>
     <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
-    </script>
-    <script src="js/plugins.js"></script>
-    <script src="js/simple_map.bundle.js"></script>
+        require([
+            "esri/map",
+        ], function(map) {
+            var portalURL = "https://maps.vcgi.vermont.gov";
 
+
+            // Layer.fromPortalItem({
+            //     url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/21/query?where=1%3D1&outFields=*&outSR=4326&f=json"
+            // }).then(function(lyr) {
+            //     // Adds layer to the map
+            //     map.add(lyr);
+            // });
+
+            var view = new MapView({
+                container: "viewDiv", // Reference to the DOM node that will contain the view
+                map: map, // References the map object created in step 3
+                //Size the MapView to only show Vermont
+                extent: {
+                    "xmin": -8385168.949407466,
+                    "ymin": 5387935.44374791,
+                    "xmax": -7747200.434209026,
+                    "ymax": 5642139.985168016,
+                    "spatialReference": {
+                        "wkid": 102100,
+                        "latestWkid": 3857
+                    }
+                }
+            });
+
+
+        });
+    </script>
 
 </body>
 
