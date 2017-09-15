@@ -14,26 +14,28 @@
     .legend {
     line-height: 18px;
     color: #555;
-		}
-		.legend i {
+	}
+	
+    .legend i {
     width: 18px;
     height: 18px;
     float: left;
     margin-right: 8px;
     opacity: 0.7;
-		}
+	}
 
-		.info {
-			background: rgba(255, 255, 255, 0.7);
-		}
+	.info {
+		background: rgba(255, 255, 255, 0.7);
+	}
     </style>
 
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+    <!-- Leaflet.js requires both this stylesheet AND the js file below to work properly -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
    crossorigin=""/>
 
     <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
    crossorigin=""></script>
    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -136,7 +138,7 @@ legend.onAdd = function (map) {
         grades = [1880, 1900, 1920, 1940, 1960, 1980, 2000],
         labels = [];
 
-    // loop through our density intervals and generate a label with a colored square for each interval
+    // loop through year intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +

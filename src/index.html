@@ -77,6 +77,7 @@
                     <ul>
                         <li><i class="mdi mdi-language-javascript"></i><a href="    http://leafletjs.com/">Leaflet : an open-source JavaScript library
 for mobile-friendly interactive maps</a></li>
+                        <li><i class="mdi mdi-language-javascript"></i><a href="https://developers.google.com/maps/documentation/javascript/">Google Maps JavaScript API</a></li>
                         <li><i class="mdi mdi-language-javascript"></i><a href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a></li>
 
                         <li><i class="mdi mdi-apple-ios"></i><a href="https://developers.arcgis.com/android/">ArcGIS Runtime SDK for iOS</a></li>
@@ -96,6 +97,12 @@ for mobile-friendly interactive maps</a></li>
                             <p>When : Saturday, September 16, 2017</p>
                             <p>Where : Champlain College, Burlington Vermont</p>
                             <p><a href="https://www.vtcodecamp.org/">More Info Here</a></p>
+                        </div>
+                        <div class="arcgis-talk">
+                            <h4>Getting Started Making Map Applications</h4>
+                            <p>When : Monday, September 18, 2017</p>
+                            <p>Where : Main Street Landing, Burlington, Vermont</p>
+                            <p><a href="https://www.meetup.com/VTCode/events/242587988/">More Info Here</a></p>
                         </div>
                         <div class="arcgis-talk">
                             <h4>BurlingtonJS Meetup</h4>
@@ -163,16 +170,6 @@ for mobile-friendly interactive maps</a></li>
                             <p>Using Vermont GIS data and layers</p>
                         </div>
                     </article>
-                    <article class="demo-app-link custom-pins">
-                        <a href="examples/custom-pins" target="_blank"><img src="./img/custom-pins-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
-                        <span class="demo-app-title"> <a  href="examples/custom-pins">Rendering a simple map in the browser</a></span>
-                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/custom-pins" target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                        <div class="demo-app-description">
-                            <p>Twee Truffaut narwhal Austin banh mi freegan cornhole try-hard four loko whatever 90's pug Wes Anderson sartorial Intelligentsia Williamsburg keytar </p>
-                            <p>Photo booth lomo vinyl you probably haven't heard of them synth literally fanny pack bitters meggings bespoke butcher Pitchfork 3 wolf moon 8-bit distillery </p>
-                            <p>Keffiyeh retro authentic XOXO pour-over crucifix.</p>
-                        </div>
-                    </article>
                     <article class="demo-app-link mapbox">
                         <a href="examples/mapbox" target="_blank"><img src="./img/mapbox-screen-shot.png" alt="mapbox demo app screen shot" /></a>
                         <span class="demo-app-title"> <a  href="examples/mapbox">An app hosted on Mapbox created with Mapbox-GL</a></span>
@@ -181,18 +178,7 @@ for mobile-friendly interactive maps</a></li>
                             <p>I wanted a map showing the age of Burlington buildings (inspired by <a href="http://cityhubla.github.io/LA_Building_Age/#12/34.0267/-118.2621">Age of LA</a>).  
                             </p>
                             <p>
-                            <strong>Data Sources:</strong> A shapefile containing Vermont building outlines was found <a href="http://download.geofabrik.de/north-america/us/vermont.html">here</a>, and property information containing the year built was found on the <a href="https://data.burlingtonvt.gov/City-Hall/Map-City-of-Burlington-Property-Details/4jui-2fjw">Burlington City Data Portal</a>.
-                            </p>
-                            <p>
-                            <strong>Data Processing:</strong> I had to find a way to join each line of property information (which had the year built) with a building outline.  This is accomplished with qGIS (free ArcGIS).
-                            </p>
-                            <p>
-
-                            The only location information associated with the property information is the center point of the property in Latitude and Longitude (-73, 44).  In order to import and use this location information in qGIS (and many other GIS programs), I had to use Excel to break out the Latitude and Longitude into their own fields using the formulas found <a href="https://stackoverflow.com/questions/5889215/excel-data-manipulation?rq=1">here</a>. 
-                            <p>
-                            </p>
-
-                            I imported the buildings shape file and the property data into qGIS.  Then I generated the center point for each building using Polygon Centroid under Vector --> Analysis Tools.  I could then create a Distance Matrix showing the closest building center point to each property center point.  This was a pretty accurate way to join each building outline with its property information.  Then I used joins to join the property data with the distance matrix and the buildings shapefile, created a layer out of this information and downloaded it as a shapefile.
+                            <strong>Data Sources:</strong> A shapefile containing Vermont building outlines was found <a href="http://download.geofabrik.de/north-america/us/vermont.html">here</a>, and property information containing the year built was found on the <a href="https://data.burlingtonvt.gov/City-Hall/Map-City-of-Burlington-Property-Details/4jui-2fjw">Burlington City Data Portal</a>.  These were further processed and joined together using Excel and qGIS.
                             </p>
                             <p>
                             <strong>Map Style:</strong> In mapbox I created a style and uploaded this shapefile as a tileset.  Then I added the tileset as a layer, and to the right of the layer -> Style -> Color select there is a steps icon which allows you to color buildings differently according to a property.
@@ -202,32 +188,36 @@ for mobile-friendly interactive maps</a></li>
                             </p>
                         </div>
                     </article>
-                    <article class="demo-app-link rendering-layers">
-                        <a href="examples/rendering-layers" target="_blank"><img src="./img/rendering-layers-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
-                        <span class="demo-app-title"> <a  href="examples/rendering-layers">Rendering a simple map in the browser</a></span>
-                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/rendering-layers"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                    <article class="demo-app-link leaflet">
+                        <a href="examples/leaflet/index.html" target="_blank"><img src="./img/leaflet.png" alt="leaflet demo app screen shot" /></a>
+                        <span class="demo-app-title"> <a  href="examples/leaflet/index.html">One layer of data in Leaflet.js</a></span>
+                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/leaflet"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
                         <div class="demo-app-description">
-                            <p>Sustainable flexitarian fap blog Odd Future Echo Park pickled gentrify swag Tonx occupy art party lo-fi cray fingerstache Bushwick polaroid kale chips fashion axe roof party chia small batch chambray hella before they sold
-                                out hoodie
+                            <p>
+                            <strong>Data Sources:</strong> A shapefile containing Vermont building outlines was found <a href="http://download.geofabrik.de/north-america/us/vermont.html">here</a>, and property information containing the year built was found on the <a href="https://data.burlingtonvt.gov/City-Hall/Map-City-of-Burlington-Property-Details/4jui-2fjw">Burlington City Data Portal</a>.  These were further processed and joined together using Excel and qGIS.
                             </p>
-                            <p>Pork belly salvia aesthetic jean shorts flannel Thundercats Pinterest craft beer heirloom stumptown wayfarers put a bird on it ethical squid biodiesel semiotics kitsch seitan dreamcatcher Brooklyn DIY tattooed church-key Helvetica
-                                PBR&B selvage kogi letterpress Blue Bottle Cosby sweater drinking vinegar mumblecore American Apparel beard forage tousled +1 McSweeney's Etsy wolf typewriter selfies cliche readymade Tumblr normcore next level Kickstarter
-                                master
+                            <p>
+                            <strong>Map Style:</strong> This was almost entirely styled with leaflet.js built-in options, and one custom function getColor, which applies a color to the building based on its YearBuilt property.  
                             </p>
-                            <p>Cleanse shabby chic organic ugh tote bag Schlitz PBR cred disrupt gastropub umami scenester yr direct trade food truck mlkshk vegan meh trust fund leggings skateboard messenger bag artisan slow-carb irony farm-to-table deep
-                                v iPhone bicycle rights post-ironic pop-up asymmetrical quinoa Vice raw denim Shoreditch gluten-free fixie single-origin coffee Carles chillwave Banksy.
+                            <p>
+                            <strong>Additional Info & Interactivity:</strong>  Leaflet.js has built in functions for creating controls, which I used.  The onEachFeature function adds the highlighting and year display for each building. 
                             </p>
-
                         </div>
                     </article>
-                    <article class="demo-app-link custom-pins">
-                        <a href="examples/custom-pins" target="_blank"><img src="./img/custom-pins-screen-shot.jpg" alt="simple map demo app screen shot" /></a>
-                        <span class="demo-app-title"> <a  href="examples/custom-pins">Rendering a simple map in the browser</a></span>
-                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/custom-pins" target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                    <article class="demo-app-link mapbox">
+                        <a href="examples/leafletLayers/index.html" target="_blank"><img src="./img/leafletLayers.png" alt="mapbox demo app screen shot" /></a>
+                        <span class="demo-app-title"> <a  href="examples/leafletLayers/index.html">Multiple layers in Leaflet.js</a></span>
+                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/leafletLayers"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
                         <div class="demo-app-description">
-                            <p>Twee Truffaut narwhal Austin banh mi freegan cornhole try-hard four loko whatever 90's pug Wes Anderson sartorial Intelligentsia Williamsburg keytar </p>
-                            <p>Photo booth lomo vinyl you probably haven't heard of them synth literally fanny pack bitters meggings bespoke butcher Pitchfork 3 wolf moon 8-bit distillery </p>
-                            <p>Keffiyeh retro authentic XOXO pour-over crucifix.</p>
+                            <p>
+                            <strong>Data Sources:</strong> This uses the same data as the other Burlington Buildings apps.  I create seven layers by using a filter function to extract the different segments from the same geojson data.
+                            </p>
+                            <p>
+                            <strong>Map Style:</strong> Each layer is given a different color as it is added to the map.  Most of the styling is the leaflet.js defaults.
+                            </p>
+                            <p>
+                            <strong>Additional Info & Interactivity:</strong> The layer toggling legend/control was created entirely by leaflet.js.  
+                            </p>
                         </div>
                     </article>
                 </div>
