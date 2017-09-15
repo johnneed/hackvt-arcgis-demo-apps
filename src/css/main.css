@@ -625,6 +625,18 @@ li>a {
     clear: both;
 }
 
+.demo-app-link h4 span {
+    display: inline;
+    margin-right: 1rem;
+    vertical-align: middle;
+}
+
+article h4 i {
+    margin-right: 1rem;
+    font-size: 4rem;
+    vertical-align: middle;
+}
+
 @media only screen and (min-width: 768px) {
     /* Style adjustments for viewports that meet the condition */
     ul {
