@@ -10,8 +10,8 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="simple-map/css/normalize.css">
-    <link rel="stylesheet" href="simple-map/css/main.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
     <style>
         html,
@@ -34,55 +34,46 @@
             color: #EFEFEF;
         }
     </style>
+    <script src="https://js.arcgis.com/4.4/"></script>
+    <script>
+        require([
+            "esri/config",
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/FeatureLayer",
+            "dojo/domReady!"
+        ], function(esriConfig, Map, MapView, FeatureLayer) {
+
+            //Enable CORS so we can make calls to the VCGI API.
+            esriConfig.request.corsEnabledServers.push("maps.vcgi.vermont.gov");
+
+            // Create a Map
+            var map = new Map({
+                basemap: "hybrid",
+            });
+
+            // Make map view and bind it to the map
+            var view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [-73.2187148, 44.4556483],
+                zoom: 10
+            });
+
+            //Create a new Vector Layer
+            var townLayer = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/39/query?outFields=*&where=1%3D1"
+            });
+
+            // Add the Layer to the map
+            map.add(townLayer);
+        });
+    </script>
 </head>
 
 <body>
     <h1>Hack VT Map Demo - Adding Layers</h1>
     <div id="viewDiv"></div>
-    <script src="https://js.arcgis.com/4.4/"></script>
-    <script>
-        require([
-            "esri/layers/MapImageLayer",
-            "esri/Basemap",
-            "esri/Map",
-            "esri/views/MapView",
-            "dojo/domReady!"
-        ], function(MapImageLayer, BaseMap, Map, MapView) {
-
-            var baseLayer = new MapImageLayer({
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/VCGI_services/VCGI_BASEMAP_WM_v2/MapServer"
-            });
-
-            var airportLayer = new MapImageLayer({
-                url: "http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/29/query?outFields=*&where=1%3D1"
-            });
-
-
-            var map = new Map({
-                basemap: baseLayer,
-                layers: [airportLayer] // layers can be added as an array to the map's constructor
-            });
-
-
-
-            var view = new MapView({
-                container: "viewDiv", // Reference to the DOM node that will contain the view
-                map: map, // References the map object created in step 3
-                //Size the MapView to only show Vermont
-                extent: {
-                    "xmin": -8385168.949407466,
-                    "ymin": 5387935.44374791,
-                    "xmax": -7747200.434209026,
-                    "ymax": 5642139.985168016,
-                    "spatialReference": {
-                        "wkid": 102100,
-                        "latestWkid": 3857
-                    }
-                }
-            });
-
-        });
-    </script>
 </body>
 
 </html>
