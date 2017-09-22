@@ -22,7 +22,7 @@
             height: calc(100vh - 5em);
             width: 100%;
         }
-        
+
         h1 {
             height: 2em;
             margin: 0;
@@ -42,14 +42,14 @@
             "esri/views/MapView",
             "esri/layers/FeatureLayer",
             "dojo/domReady!"
-        ], function(esriConfig, Map, MapView, FeatureLayer) {
+        ], function (esriConfig, Map, MapView, FeatureLayer) {
 
             //Enable CORS so we can make calls to the VCGI API.
             esriConfig.request.corsEnabledServers.push("maps.vcgi.vermont.gov");
 
             // Create a Map
             var map = new Map({
-                basemap: "hybrid",
+                basemap: "hybrid"
             });
 
             // Make map view and bind it to the map
@@ -60,20 +60,58 @@
                 zoom: 10
             });
 
-            //Create a new Vector Layer
-            var townLayer = new FeatureLayer({
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/39/query?outFields=*&where=1%3D1"
+
+            /** BOUNDRIES **/
+
+            // Town Boundries
+            var townBoundries = new FeatureLayer({
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/39/query?outFields=*&where=1%3D1"
+                });
+
+            //County Boundries
+            var countyBoundries = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/29/query?outFields=*&where=1%3D1"
             });
 
-            // Add the Layer to the map
-            map.add(townLayer);
+            /** CENSUS BLOCKS **/
+
+            // 2010 Census
+            var _2010CensusBlocks = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_DEMOGRAPHIC_SP_NOCACHE_v1/MapServer/19/query?outFields=*&where=1%3D1"
+            });
+
+            // 2000 Census
+            var _2000CensusBlocks = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_DEMOGRAPHIC_SP_NOCACHE_v1/MapServer/20/query?outFields=*&where=1%3D1"
+            });
+
+            /** HEXAGONS **/
+
+            // WITH JOBS & POPULATION DATA)
+            // Downloadable shape files only --- TODO : Load from local
+
+            /** ORTHOPHOTO IMAGERY SERVICE **/
+
+            // Leaf-off color imagery for all of Vermont.
+            var leafOffColorImagery = new FeatureLayer({
+                url : "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_CLR_WM_CACHE/ImageServer?f=pjson"
+            });
+
+
+            /** LIDAR SERVICES **/
+
+            // LIDAR DIGITAL ELEVATION MODEL
+
+
+             // Add the Layer to the map
+            map.add(leafOffColorImagery);
         });
     </script>
 </head>
 
 <body>
-    <h1>Hack VT Map Demo - Adding Layers</h1>
-    <div id="viewDiv"></div>
+<h1>Hack VT Map Demo - Adding Layers</h1>
+<div id="viewDiv"></div>
 </body>
 
 </html>
