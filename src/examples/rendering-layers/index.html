@@ -164,6 +164,8 @@
             var townBoundries = new FeatureLayer({
                 id: "townBoundries",
                 visible: false,
+                opacity: 0.5,
+                color: 'FF0000',
                 url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/39/query?outFields=*&where=1%3D1"
             });
 
@@ -171,6 +173,7 @@
             var countyBoundries = new FeatureLayer({
                 id: "countyBoundries",
                 visible: false,
+                opacity: 0.5,
                 url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/29/query?outFields=*&where=1%2D1"
             });
 
@@ -180,6 +183,7 @@
             var _2010CensusBlocks = new FeatureLayer({
                 id: "_2010CensusBlocks",
                 visible: false,
+                opacity: 0.5,
                 url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_DEMOGRAPHIC_SP_NOCACHE_v1/MapServer/19/query?outFields=*&where=1%2D1"
             });
 
@@ -187,6 +191,7 @@
             var _2000CensusBlocks = new FeatureLayer({
                 id: "_2000CensusBlocks",
                 visible: false,
+                opacity: 0.5,
                 url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_DEMOGRAPHIC_SP_NOCACHE_v1/MapServer/20/query?outFields=*&where=1%2D1"
             });
 
@@ -263,6 +268,7 @@
             // FLOODPLAINS
             var floodplains = new FeatureLayer({
                 id: "floodplains",
+                opacity: 0.5,
                 visible: false,
                 url: "https://anrmaps.vermont.gov/arcgis/rest/services/Open_Data/OPENDATA_ANR_EMERGENCY_SP_NOCACHE_v2/MapServer/57/query?outFields=*&where=1%2D1"
             });
@@ -277,6 +283,7 @@
             // BEDROCK GEOLOGIC MAP
             var bedrockGeologicMap = new FeatureLayer({
                 id: "bedrockGeologicMap",
+                opacity: 0.5,
                 visible: false,
                 url: "https://anrmaps.vermont.gov/arcgis/rest/services/Open_Data/OPENDATA_ANR_GEOLOGIC_SP_NOCACHE_v2/MapServer/165/query?outFields=*&where=1%2D1"
             });
