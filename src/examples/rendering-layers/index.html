@@ -158,7 +158,7 @@
 
             /** ROADS **/
 
-            // Road Centerlines
+                // Road Centerlines
             var roadCenterlines = new FeatureLayer({
                     url: "http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/39/query?outFields=*&where=1%3D1"
                 });
@@ -169,9 +169,56 @@
             });
 
 
+            // Roadside Historic Markers
+            var roadsideHistoricMarkers = new FeatureLayer({
+                url: "http://anrmaps.vermont.gov/arcgis/rest/services/map_services/ACCD_OpenData/MapServer/12/query?outFields=*&where=1%3D1"
+            });
 
-                // Add the Layer to the map
-            map.add(averageDailyTraffic);
+            /** OUTDOORS **/
+
+                // Trails
+            var trails = new FeatureLayer({
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/21/query?outFields=*&where=1%3D1"
+                });
+
+            // Outdoor Recreation Sites
+            var outdoorRecreationSites = new FeatureLayer({
+                url: "https://anrmaps.vermont.gov/arcgis/rest/services/Open_Data/OPENDATA_ANR_TOURISM_SP_NOCACHE_v2/MapServer/166/query?outFields=*&where=1%3D1"
+            });
+
+            // Fishing Access Areas
+            var fishingAccessAreas = new FeatureLayer({
+                url: "https://anrmaps.vermont.gov/arcgis/rest/services/Open_Data/OPENDATA_ANR_TOURISM_SP_NOCACHE_v2/MapServer/163/query?outFields=*&where=1%3D1"
+            });
+
+            // Alpine Ski Lifts
+
+            var alpineSkiLifts = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/32/query?outFields=*&where=1%3D1"
+            });
+
+
+            // College Campus Buildings
+            var collegeCampusBuildings = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_FACILITIES_SP_NOCACHE_v1/MapServer/2/query?outFields=*&where=1%3D1"
+            });
+
+            // GREEN MOUNTAIN POWER LINE DATA
+            var greenMountainPowerLineData = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_UTILITIES_SP_NOCACHE_v1/MapServer/77/query?outFields=*&where=1%3D1"
+            });
+
+            // VT School Locations - K-12
+            var vermontSchoolLocationsK12 = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_FACILITIES_SP_NOCACHE_v1/MapServer/3/query?outFields=*&where=1%3D1"
+            });
+
+            // Site Locations (building address points)
+            var buildingAddressPoints = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/29/query?outFields=*&where=1%3D1"
+            });
+            // Add the Layer to the map
+            map.add(buildingAddressPoints);
         });
     </script>
 </head>
