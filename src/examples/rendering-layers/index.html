@@ -160,13 +160,18 @@
 
             // Road Centerlines
             var roadCenterlines = new FeatureLayer({
-url:"http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/39/query?outFields=*&where=1%3D1"
+                    url: "http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/39/query?outFields=*&where=1%3D1"
+                });
+
+            // Average Daily Traffic
+            var averageDailyTraffic = new FeatureLayer({
+                url: "http://maps.vtrans.vermont.gov/arcgis/rest/services/Master/General/FeatureServer/50/query?outFields=*&where=1%3D1"
             });
 
 
 
-            // Add the Layer to the map
-            map.add(roadCenterlines);
+                // Add the Layer to the map
+            map.add(averageDailyTraffic);
         });
     </script>
 </head>
