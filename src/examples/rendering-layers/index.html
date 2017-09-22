@@ -41,11 +41,13 @@
             "esri/Map",
             "esri/views/MapView",
             "esri/layers/FeatureLayer",
+            "esri/layers/ImageryLayer",
             "dojo/domReady!"
-        ], function (esriConfig, Map, MapView, FeatureLayer) {
+        ], function (esriConfig, Map, MapView, FeatureLayer, ImageryLayer) {
 
             //Enable CORS so we can make calls to the VCGI API.
             esriConfig.request.corsEnabledServers.push("maps.vcgi.vermont.gov");
+            esriConfig.request.corsEnabledServers.push("anrmaps.vermont.gov");
 
             // Create a Map
             var map = new Map({
@@ -63,7 +65,7 @@
 
             /** BOUNDRIES **/
 
-            // Town Boundries
+                // Town Boundries
             var townBoundries = new FeatureLayer({
                     url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/39/query?outFields=*&where=1%3D1"
                 });
@@ -75,10 +77,10 @@
 
             /** CENSUS BLOCKS **/
 
-            // 2010 Census
+                // 2010 Census
             var _2010CensusBlocks = new FeatureLayer({
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_DEMOGRAPHIC_SP_NOCACHE_v1/MapServer/19/query?outFields=*&where=1%3D1"
-            });
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_DEMOGRAPHIC_SP_NOCACHE_v1/MapServer/19/query?outFields=*&where=1%3D1"
+                });
 
             // 2000 Census
             var _2000CensusBlocks = new FeatureLayer({
@@ -92,19 +94,79 @@
 
             /** ORTHOPHOTO IMAGERY SERVICE **/
 
-            // Leaf-off color imagery for all of Vermont.
-            var leafOffColorImagery = new FeatureLayer({
-                url : "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_CLR_WM_CACHE/ImageServer?f=pjson"
-            });
+                // Leaf-off color imagery for all of Vermont.
+            var leafOffColorImagery = new ImageryLayer({
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_CLR_WM_CACHE/ImageServer?f=pjson"
+                });
 
 
             /** LIDAR SERVICES **/
 
-            // LIDAR DIGITAL ELEVATION MODEL
+                // LIDAR Digital Elevation Model
+            var LIDAR_DigitalElevationModel = new ImageryLayer({
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_LIDARDEM_SP_NOCACHE_v1/ImageServer"
+                });
 
 
-             // Add the Layer to the map
-            map.add(leafOffColorImagery);
+            var LIDARD_HillShade = new ImageryLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_LIDARHILLSHD_WM_CACHE_v1/ImageServer?f=pjson"
+            });
+
+
+            var LIDAR_Aspect = new ImageryLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_LIDARASPECT_SP_NOCACHE_v1/ImageServer?f=pjson"
+            });
+
+            var LIDAR_AspectSymbolized = new ImageryLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_LIDARASPECTSYM_SP_NOCACHE_v1/ImageServer?f=pjson"
+            });
+
+
+            var LIDAR_Slope_StatePlaneMeters = new ImageryLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_LIDARSLOPE_SP_NOCACHE_v1/ImageServer?f=pjson"
+            });
+
+            var LIDAR_Slope_StatePlaneMetersSymbolized = new ImageryLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_LIDARSLOPESYM_SP_NOCACHE_v1/ImageServer?f=pjson"
+            });
+
+            /** SOIL DATA **/
+            // Download only files TODO : add to map
+
+
+            /** VT WATER **/
+
+                // HYDROGRAPHY
+            var hydrography = new FeatureLayer({
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_WATER_SP_NOCACHE_v1/MapServer/11/query?outFields=*&where=1%3D1"
+                });
+
+            // FLOODPLAINS
+            var floodplains = new FeatureLayer({
+                url: "https://anrmaps.vermont.gov/arcgis/rest/services/Open_Data/OPENDATA_ANR_EMERGENCY_SP_NOCACHE_v2/MapServer/57/query?outFields=*&where=1%3D1"
+            });
+
+            // LAKE CHAMPLAIN BATHYMETRY
+            var lakeChamplainBathymetry = new FeatureLayer({
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_ELEVATION_SP_NOCACHE_v1/MapServer/2/query?outFields=*&where=1%3D1"
+            });
+
+            // BEDROCK GEOLOGIC MAP
+            var bedrockGeologicMap = new FeatureLayer({
+                url: "https://anrmaps.vermont.gov/arcgis/rest/services/Open_Data/OPENDATA_ANR_GEOLOGIC_SP_NOCACHE_v2/MapServer/165/query?outFields=*&where=1%3D1"
+            });
+
+            /** ROADS **/
+
+            // Road Centerlines
+            var roadCenterlines = new FeatureLayer({
+url:"http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/39/query?outFields=*&where=1%3D1"
+            });
+
+
+
+            // Add the Layer to the map
+            map.add(roadCenterlines);
         });
     </script>
 </head>
