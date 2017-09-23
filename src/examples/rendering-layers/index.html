@@ -22,7 +22,7 @@
             height: 100vh;
             width: 100vw;
         }
-        
+
         h1 {
             font-size: 2.4rem;
             height: 5rem;
@@ -34,7 +34,7 @@
             background: #020202;
             color: #EFEFEF;
         }
-        
+
         .flex-container {
             height: calc(100vh - 5rem);
             width: 100vw;
@@ -59,7 +59,7 @@
             -ms-flex-align: start;
             align-items: flex-start;
         }
-        
+
         #layerToggle {
             -webkit-order: 0;
             -ms-flex-order: 0;
@@ -72,7 +72,7 @@
             align-self: stretch;
             overflow-y: auto;
         }
-        
+
         #layerToggle .scroll-container label {
             cursor: pointer;
             font-size: 1rem;
@@ -98,11 +98,11 @@
             -ms-flex-align: start;
             align-items: flex-start;
         }
-        
+
         #layerToggle .scroll-container label:hover {
             background: rgba(0, 255, 200, 0.5);
         }
-        
+
         #layerToggle .scroll-container label input {
             border: solid 1px #AAA;
             border-radius: 2px;
@@ -116,7 +116,7 @@
             -ms-flex-item-align: center;
             align-self: center;
         }
-        
+
         #layerToggle .scroll-container label span {
             -webkit-order: 0;
             -ms-flex-order: 0;
@@ -128,7 +128,7 @@
             -ms-flex-item-align: center;
             align-self: center;
         }
-        
+
         #viewDiv {
             -webkit-order: 1;
             -ms-flex-order: 1;
@@ -149,8 +149,9 @@
             "esri/views/MapView",
             "esri/layers/FeatureLayer",
             "esri/layers/ImageryLayer",
+            "esri/geometry/support/jsonUtils",
             "dojo/domReady!"
-        ], function(esriConfig, Map, MapView, FeatureLayer, ImageryLayer) {
+        ], function (esriConfig, Map, MapView, FeatureLayer, ImageryLayer, geometryJsonUtils) {
 
             //Enable CORS so we can make calls to the VCGI API.
             esriConfig.request.corsEnabledServers.push("maps.vcgi.vermont.gov");
@@ -160,14 +161,14 @@
 
             /** BOUNDRIES **/
 
-            // Town Boundries
+                // Town Boundries
             var townBoundries = new FeatureLayer({
-                id: "townBoundries",
-                visible: false,
-                opacity: 0.5,
-                color: 'FF0000',
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/39/query?outFields=*&where=1%3D1"
-            });
+                    id: "townBoundries",
+                    visible: false,
+                    opacity: 0.5,
+                    color: "FF0000",
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_BOUNDARIES_SP_NOCACHE_v1/MapServer/39/query?outFields=*&where=1%3D1"
+                });
 
             //County Boundries
             var countyBoundries = new FeatureLayer({
@@ -179,13 +180,13 @@
 
             /** CENSUS BLOCKS **/
 
-            // 2010 Census
+                // 2010 Census
             var _2010CensusBlocks = new FeatureLayer({
-                id: "_2010CensusBlocks",
-                visible: false,
-                opacity: 0.5,
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_DEMOGRAPHIC_SP_NOCACHE_v1/MapServer/19/query?outFields=*&where=1%2D1"
-            });
+                    id: "_2010CensusBlocks",
+                    visible: false,
+                    opacity: 0.5,
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_DEMOGRAPHIC_SP_NOCACHE_v1/MapServer/19/query?outFields=*&where=1%2D1"
+                });
 
             // 2000 Census
             var _2000CensusBlocks = new FeatureLayer({
@@ -202,22 +203,22 @@
 
             /** ORTHOPHOTO IMAGERY SERVICE **/
 
-            // Leaf-off color imagery for all of Vermont.
+                // Leaf-off color imagery for all of Vermont.
             var leafOffColorImagery = new ImageryLayer({
-                id: "leafOffColorImagery",
-                visible: false,
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_CLR_WM_CACHE/ImageServer?f=pjson"
-            });
+                    id: "leafOffColorImagery",
+                    visible: false,
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_CLR_WM_CACHE/ImageServer?f=pjson"
+                });
 
 
             /** LiDAR SERVICES **/
 
-            // liDAR Digital Elevation Model
+                // liDAR Digital Elevation Model
             var liDAR_DigitalElevationModel = new ImageryLayer({
-                id: "liDAR_DigitalElevationModel",
-                visible: false,
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_LIDARDEM_SP_NOCACHE_v1/ImageServer?f=pjson"
-            });
+                    id: "liDAR_DigitalElevationModel",
+                    visible: false,
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/IMG_VCGI_LIDARDEM_SP_NOCACHE_v1/ImageServer?f=pjson"
+                });
 
 
             var liDAR_HillShade = new ImageryLayer({
@@ -258,12 +259,12 @@
 
             /** VT WATER **/
 
-            // HYDROGRAPHY
+                // HYDROGRAPHY
             var hydrography = new FeatureLayer({
-                id: "hydrography",
-                visible: false,
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_WATER_SP_NOCACHE_v1/MapServer/11/query?outFields=*&where=1%2D1"
-            });
+                    id: "hydrography",
+                    visible: false,
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_WATER_SP_NOCACHE_v1/MapServer/11/query?outFields=*&where=1%2D1"
+                });
 
             // FLOODPLAINS
             var floodplains = new FeatureLayer({
@@ -290,12 +291,12 @@
 
             /** ROADS **/
 
-            // Road Centerlines
+                // Road Centerlines
             var roadCenterlines = new FeatureLayer({
-                id: "roadCenterlines",
-                visible: false,
-                url: "http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/39/query?outFields=*&where=1%3D1"
-            });
+                    id: "roadCenterlines",
+                    visible: false,
+                    url: "http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/39/query?outFields=*&where=1%3D1"
+                });
 
             // Average Daily Traffic
             var averageDailyTraffic = new FeatureLayer({
@@ -314,12 +315,12 @@
 
             /** OUTDOORS **/
 
-            // Trails
+                // Trails
             var trails = new FeatureLayer({
-                id: "trails",
-                visible: false,
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/21/query?outFields=*&where=1%2D1"
-            });
+                    id: "trails",
+                    visible: false,
+                    url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/21/query?outFields=*&where=1%2D1"
+                });
 
             // Outdoor Recreation Sites
             var outdoorRecreationSites = new FeatureLayer({
@@ -340,7 +341,7 @@
             var alpineSkiLifts = new FeatureLayer({
                 id: "alpineSkiLifts",
                 visible: false,
-                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/22/query?outFields=*&where=1%2D1"
+                url: "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/32/query?outFields=*&where=1%3D1"
             });
 
 
@@ -421,71 +422,74 @@
             }
 
             // Bind all the checkbox change events to the correct map layer for toggling
-            document.getElementById('townBoundries').addEventListener('change', _toggleLayerVisiblity(townBoundries));
-            document.getElementById('countyBoundries').addEventListener('change', _toggleLayerVisiblity(countyBoundries));
-            document.getElementById('_2010CensusBlocks').addEventListener('change', _toggleLayerVisiblity(_2010CensusBlocks));
-            document.getElementById('_2000CensusBlocks').addEventListener('change', _toggleLayerVisiblity(_2000CensusBlocks));
-            document.getElementById('leafOffColorImagery').addEventListener('change', _toggleLayerVisiblity(leafOffColorImagery));
-            document.getElementById('liDAR_DigitalElevationModel').addEventListener('change', _toggleLayerVisiblity(liDAR_DigitalElevationModel));
-            document.getElementById('liDAR_HillShade').addEventListener('change', _toggleLayerVisiblity(liDAR_HillShade));
-            document.getElementById('liDAR_Aspect').addEventListener('change', _toggleLayerVisiblity(liDAR_Aspect));
-            document.getElementById('liDAR_AspectSymbolized').addEventListener('change', _toggleLayerVisiblity(liDAR_AspectSymbolized));
-            document.getElementById('liDAR_Slope_StatePlaneMeters').addEventListener('change', _toggleLayerVisiblity(liDAR_Slope_StatePlaneMeters));
-            document.getElementById('liDAR_Slope_StatePlaneMetersSymbolized').addEventListener('change', _toggleLayerVisiblity(liDAR_Slope_StatePlaneMetersSymbolized));
-            document.getElementById('hydrography').addEventListener('change', _toggleLayerVisiblity(hydrography));
-            document.getElementById('floodplains').addEventListener('change', _toggleLayerVisiblity(floodplains));
-            document.getElementById('lakeChamplainBathymetry').addEventListener('change', _toggleLayerVisiblity(lakeChamplainBathymetry));
-            document.getElementById('bedrockGeologicMap').addEventListener('change', _toggleLayerVisiblity(bedrockGeologicMap));
-            document.getElementById('roadCenterlines').addEventListener('change', _toggleLayerVisiblity(roadCenterlines));
-            document.getElementById('averageDailyTraffic').addEventListener('change', _toggleLayerVisiblity(averageDailyTraffic));
-            document.getElementById('roadsideHistoricMarkers').addEventListener('change', _toggleLayerVisiblity(roadsideHistoricMarkers));
-            document.getElementById('trails').addEventListener('change', _toggleLayerVisiblity(trails));
-            document.getElementById('outdoorRecreationSites').addEventListener('change', _toggleLayerVisiblity(outdoorRecreationSites));
-            document.getElementById('fishingAccessAreas').addEventListener('change', _toggleLayerVisiblity(fishingAccessAreas));
-            document.getElementById('alpineSkiLifts').addEventListener('change', _toggleLayerVisiblity(alpineSkiLifts));
-            document.getElementById('collegeCampusBuildings').addEventListener('change', _toggleLayerVisiblity(collegeCampusBuildings));
-            document.getElementById('greenMountainPowerLineData').addEventListener('change', _toggleLayerVisiblity(greenMountainPowerLineData));
-            document.getElementById('vermontSchoolLocationsK12').addEventListener('change', _toggleLayerVisiblity(vermontSchoolLocationsK12));
-            document.getElementById('buildingAddressPoints').addEventListener('change', _toggleLayerVisiblity(buildingAddressPoints));
+            document.getElementById("townBoundries").addEventListener("change", _toggleLayerVisiblity(townBoundries));
+            document.getElementById("countyBoundries").addEventListener("change", _toggleLayerVisiblity(countyBoundries));
+            document.getElementById("_2010CensusBlocks").addEventListener("change", _toggleLayerVisiblity(_2010CensusBlocks));
+            document.getElementById("_2000CensusBlocks").addEventListener("change", _toggleLayerVisiblity(_2000CensusBlocks));
+            document.getElementById("leafOffColorImagery").addEventListener("change", _toggleLayerVisiblity(leafOffColorImagery));
+            document.getElementById("liDAR_DigitalElevationModel").addEventListener("change", _toggleLayerVisiblity(liDAR_DigitalElevationModel));
+            document.getElementById("liDAR_HillShade").addEventListener("change", _toggleLayerVisiblity(liDAR_HillShade));
+            document.getElementById("liDAR_Aspect").addEventListener("change", _toggleLayerVisiblity(liDAR_Aspect));
+            document.getElementById("liDAR_AspectSymbolized").addEventListener("change", _toggleLayerVisiblity(liDAR_AspectSymbolized));
+            document.getElementById("liDAR_Slope_StatePlaneMeters").addEventListener("change", _toggleLayerVisiblity(liDAR_Slope_StatePlaneMeters));
+            document.getElementById("liDAR_Slope_StatePlaneMetersSymbolized").addEventListener("change", _toggleLayerVisiblity(liDAR_Slope_StatePlaneMetersSymbolized));
+            document.getElementById("hydrography").addEventListener("change", _toggleLayerVisiblity(hydrography));
+            document.getElementById("floodplains").addEventListener("change", _toggleLayerVisiblity(floodplains));
+            document.getElementById("lakeChamplainBathymetry").addEventListener("change", _toggleLayerVisiblity(lakeChamplainBathymetry));
+            document.getElementById("bedrockGeologicMap").addEventListener("change", _toggleLayerVisiblity(bedrockGeologicMap));
+            document.getElementById("roadCenterlines").addEventListener("change", _toggleLayerVisiblity(roadCenterlines));
+            document.getElementById("averageDailyTraffic").addEventListener("change", _toggleLayerVisiblity(averageDailyTraffic));
+            document.getElementById("roadsideHistoricMarkers").addEventListener("change", _toggleLayerVisiblity(roadsideHistoricMarkers));
+            document.getElementById("trails").addEventListener("change", _toggleLayerVisiblity(trails));
+            document.getElementById("outdoorRecreationSites").addEventListener("change", _toggleLayerVisiblity(outdoorRecreationSites));
+            document.getElementById("fishingAccessAreas").addEventListener("change", _toggleLayerVisiblity(fishingAccessAreas));
+            document.getElementById("alpineSkiLifts").addEventListener("change", _toggleLayerVisiblity(alpineSkiLifts));
+            document.getElementById("collegeCampusBuildings").addEventListener("change", _toggleLayerVisiblity(collegeCampusBuildings));
+            document.getElementById("greenMountainPowerLineData").addEventListener("change", _toggleLayerVisiblity(greenMountainPowerLineData));
+            document.getElementById("vermontSchoolLocationsK12").addEventListener("change", _toggleLayerVisiblity(vermontSchoolLocationsK12));
+            document.getElementById("buildingAddressPoints").addEventListener("change", _toggleLayerVisiblity(buildingAddressPoints));
         });
     </script>
 </head>
 
 <body>
-    <h1>Hack VT Map Demo - Adding Layers</h1>
-    <div class="flex-container">
-        <aside id="layerToggle">
-            <div class="scroll-container">
-                <label><input type="checkbox" id="townBoundries"><span>Town Boundries</span></label>
-                <label><input type="checkbox" id="countyBoundries"><span>County Boundries</span></label>
-                <label><input type="checkbox" id="_2010CensusBlocks"><span>2010 Census Blocks</span></label>
-                <label><input type="checkbox" id="_2000CensusBlocks"><span>2000 Census Blocks</span></label>
-                <label><input type="checkbox" id="leafOffColorImagery"><span>Leaf-off Color Imagery</span></label>
-                <label><input type="checkbox" id="liDAR_DigitalElevationModel"><span>LiDAR Digital Elevation Model</span></label>
-                <label><input type="checkbox" id="liDAR_HillShade"><span>LiDAR Hill Shade</span></label>
-                <label><input type="checkbox" id="liDAR_Aspect"><span>LiDAR Aspect</span></label>
-                <label><input type="checkbox" id="liDAR_AspectSymbolized"><span>LiDAR Aspect Symbolized</span></label>
-                <label><input type="checkbox" id="liDAR_Slope_StatePlaneMeters"><span>LiDAR Slope - State Plane Meters</span></label>
-                <label><input type="checkbox" id="liDAR_Slope_StatePlaneMetersSymbolized"><span>LiDAR Slope - State Plane Meters Symbolized</span></label>
-                <label><input type="checkbox" id="hydrography"><span>Hyrography</span></label>
-                <label><input type="checkbox" id="floodplains"><span>Floodplains</span></label>
-                <label><input type="checkbox" id="lakeChamplainBathymetry"><span>Lake Champlain Bathymetry</span></label>
-                <label><input type="checkbox" id="bedrockGeologicMap"><span>Bedrock Geologic Map</span></label>
-                <label><input type="checkbox" id="roadCenterlines"><span>Road Center-Lines</span></label>
-                <label><input type="checkbox" id="averageDailyTraffic"><span>Average Daily Traffic</span></label>
-                <label><input type="checkbox" id="roadsideHistoricMarkers"><span>Roadside Historic Markers</span></label>
-                <label><input type="checkbox" id="trails"><span>Trails</span></label>
-                <label><input type="checkbox" id="outdoorRecreationSites"><span>Outdoor Recreation Sites</span></label>
-                <label><input type="checkbox" id="fishingAccessAreas"><span>Fishing Access Areas</span></label>
-                <label><input type="checkbox" id="alpineSkiLifts"><span>Alpin Ski Lifts</span></label>
-                <label><input type="checkbox" id="collegeCampusBuildings"><span>College Campus Buildings</span></label>
-                <label><input type="checkbox" id="greenMountainPowerLineData"><span>Green Mountain Power-Line Data</span></label>
-                <label><input type="checkbox" id="vermontSchoolLocationsK12"><span>VT School Locations K-12</span></label>
-                <label><input type="checkbox" id="buildingAddressPoints"><span>Building Address Points</span></label>
-            </div>
-        </aside>
-        <main id="viewDiv"></main>
-    </div>
+<h1>Hack VT Map Demo - Adding Layers</h1>
+<div class="flex-container">
+    <aside id="layerToggle">
+        <div class="scroll-container">
+            <label><input type="checkbox" id="townBoundries"><span>Town Boundries</span></label>
+            <label><input type="checkbox" id="countyBoundries"><span>County Boundries</span></label>
+            <label><input type="checkbox" id="_2010CensusBlocks"><span>2010 Census Blocks</span></label>
+            <label><input type="checkbox" id="_2000CensusBlocks"><span>2000 Census Blocks</span></label>
+            <label><input type="checkbox" id="leafOffColorImagery"><span>Leaf-off Color Imagery</span></label>
+            <label><input type="checkbox"
+                          id="liDAR_DigitalElevationModel"><span>LiDAR Digital Elevation Model</span></label>
+            <label><input type="checkbox" id="liDAR_HillShade"><span>LiDAR Hill Shade</span></label>
+            <label><input type="checkbox" id="liDAR_Aspect"><span>LiDAR Aspect</span></label>
+            <label><input type="checkbox" id="liDAR_AspectSymbolized"><span>LiDAR Aspect Symbolized</span></label>
+            <label><input type="checkbox"
+                          id="liDAR_Slope_StatePlaneMeters"><span>LiDAR Slope - State Plane Meters</span></label>
+            <label><input type="checkbox" id="liDAR_Slope_StatePlaneMetersSymbolized"><span>LiDAR Slope - State Plane Meters Symbolized</span></label>
+            <label><input type="checkbox" id="hydrography"><span>Hyrography</span></label>
+            <label><input type="checkbox" id="floodplains"><span>Floodplains</span></label>
+            <label><input type="checkbox" id="lakeChamplainBathymetry"><span>Lake Champlain Bathymetry</span></label>
+            <label><input type="checkbox" id="bedrockGeologicMap"><span>Bedrock Geologic Map</span></label>
+            <label><input type="checkbox" id="roadCenterlines"><span>Road Center-Lines</span></label>
+            <label><input type="checkbox" id="averageDailyTraffic"><span>Average Daily Traffic</span></label>
+            <label><input type="checkbox" id="roadsideHistoricMarkers"><span>Roadside Historic Markers</span></label>
+            <label><input type="checkbox" id="trails"><span>Trails</span></label>
+            <label><input type="checkbox" id="outdoorRecreationSites"><span>Outdoor Recreation Sites</span></label>
+            <label><input type="checkbox" id="fishingAccessAreas"><span>Fishing Access Areas</span></label>
+            <label><input type="checkbox" id="alpineSkiLifts"><span>Alpine Ski Lifts</span></label>
+            <label><input type="checkbox" id="collegeCampusBuildings"><span>College Campus Buildings</span></label>
+            <label><input type="checkbox"
+                          id="greenMountainPowerLineData"><span>Green Mountain Power-Line Data</span></label>
+            <label><input type="checkbox" id="vermontSchoolLocationsK12"><span>VT School Locations K-12</span></label>
+            <label><input type="checkbox" id="buildingAddressPoints"><span>Building Address Points</span></label>
+        </div>
+    </aside>
+    <main id="viewDiv"></main>
+</div>
 </body>
 
 </html>
