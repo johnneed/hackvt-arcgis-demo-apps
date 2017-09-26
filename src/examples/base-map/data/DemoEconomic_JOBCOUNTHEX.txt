@@ -1,0 +1,232 @@
+Identification_Information:
+  Citation:
+    Citation_Information:
+      Originator: VT Center for Geographic Information
+      Publication_Date: 20170914
+      Publication_Time: unknown
+      Title: DemoEconomic_JOBCOUNTHEX
+      Edition: 2017
+      Geospatial_Data_Presentation_Form: vector digital data
+      Series_Information:
+        Series_Name: short description
+        Issue_Identification: 2017
+      Publication_Information:
+        Publication_Place: Montpelier VT 05620-0501
+        Publisher: VT Center for Geographic Information
+      Other_Citation_Details: STATE
+  Description:
+    Abstract: Polygon grid of hexagons for which Census job count data was summarized.
+    Purpose: Job count data was downloaded from the Census LODES website. These job counts were then summarized within each hexagon of a polygon grid that was previously generated to cover the state of Vermont.
+  Time_Period_of_Content:
+    Time_Period_Information:
+      Single_Date/Time:
+        Calendar_Date: 20170914
+        Time_of_Day: Unknown
+    Currentness_Reference: Publication Date
+  Status:
+    Progress: Complete
+    Maintenance_and_Update_Frequency: None planned
+  Spatial_Domain:
+    Bounding_Coordinates:
+      West_Bounding_Coordinate: -73.454162
+      East_Bounding_Coordinate: -71.465281
+      North_Bounding_Coordinate: 45.018361
+      South_Bounding_Coordinate: 42.722789
+  Keywords:
+    Theme:
+      Theme_Keyword_Thesaurus: ISO 19115 Topic Category
+      Theme_Keyword: use one of the following which matches THEME_PRIM boundaries | biota | climatologyMeteorologyAtmosphere | economy | elevation | emergency | environment | farming | geoscientificInformation | health | imageryBaseMapsEarthCover | inlandWaters | location | oceans | planningCadastre | society | structure | transportation | utilitiesCommunication
+    Theme:
+      Theme_Keyword_Thesaurus: None
+      Theme_Keyword: add keyword here
+    Place:
+      Place_Keyword_Thesaurus: None
+      Place_Keyword: Vermont
+    Temporal:
+      Temporal_Keyword_Thesaurus: None
+      Temporal_Keyword: add year here
+  Access_Constraints: VCGI and the State of VT make no representations of any kind, including but not limited to the warranties of merchantability or fitness for a particular use, nor are any such warranties to be implied with respect to the data.
+  Use_Constraints: None.
+  Point_of_Contact:
+    Contact_Information:
+      Contact_Organization_Primary:
+        Contact_Organization: VT Center for Geographic Information
+      Contact_Address:
+        Address_Type: Mailing and Physical Address
+        Address: 1 National Life Dr., Davis Building, 6th Floor
+        City: Montpelier
+        State_or_Province: VT
+        Postal_Code: 05620-0501
+        Country: USA
+      Contact_Voice_Telephone: 802/882-3002
+      Contact_TDD/TTY_Telephone: None
+      Contact_Facsimile_Telephone: 802/828-3383
+      Contact_Electronic_Mail_Address: accd.vcgiinfo@vermont.gov
+      Hours_of_Service: 9am - 5pm, M-F
+  Data_Set_Credit: add something here
+  Security_Information:
+    Security_Classification_System: N/A
+    Security_Classification: Unclassified
+    Security_Handling_Description: No Security Considerations
+  Native_Data_Set_Environment: ESRI ArcGIS software
+Data_Quality_Information:
+  Attribute_Accuracy:
+    Attribute_Accuracy_Report: 
+  Logical_Consistency_Report: 
+  Completeness_Report: 
+  Positional_Accuracy:
+    Horizontal_Positional_Accuracy:
+      Horizontal_Positional_Accuracy_Report: 
+    Vertical_Positional_Accuracy:
+  Lineage:
+    Source_Information:
+      Source_Citation:
+        Citation_Information:
+          Originator: Jenny Bower
+          Publication_Date: 20170914
+          Publication_Time: unknown
+          Title: 
+          Geospatial_Data_Presentation_Form: map
+          Publication_Information:
+            Publication_Place: 
+            Publisher: 
+      Source_Scale_Denominator: 
+      Type_of_Source_Media: Shapefile
+      Source_Time_Period_of_Content:
+        Time_Period_Information:
+          Single_Date/Time:
+            Calendar_Date: 20170914
+            Time_of_Day: Unknown
+        Source_Currentness_Reference: Publication Date
+      Source_Citation_Abbreviation: 
+      Source_Contribution: 
+    Process_Step:
+      Process_Description: Generated rectangle polygon grid of hexagons having area of 2 sq. miles each covering the extent of Vermont. Used BNDHASH state boundary to select all hexagons outside of the state boundary and deleted these records.
+      Process_Date: 20170914
+      Process_Time: Unknown
+      Process_Contact:
+        Contact_Information:
+          Contact_Person_Primary:
+            Contact_Person: Jenny Bower
+            Contact_Organization: VCGI
+          Contact_Position: GIS Professional
+    Process_Step:
+      Process_Description: Downloaded LODES point data representing job counts from Census LODES website. According to the website, this data is counted at the Census block level. Data was then summarized for each hexagon generated above using the "summarize within" tool available within ArcGIS Pro.
+      Process_Date: 20170914
+      Process_Time: Unknown
+      Process_Contact:
+        Contact_Information:
+          Contact_Person_Primary:
+            Contact_Person: Jenny Bower
+            Contact_Organization: VCGI
+          Contact_Position: GIS Professional
+Spatial_Data_Organization_Information:
+  Indirect_Spatial_Reference: POLYGON
+  Direct_Spatial_Reference_Method: Vector
+  Point_and_Vector_Object_Information:
+    SDTS_Terms_Description:
+      SDTS_Point_and_Vector_Object_Type: 
+      Point_and_Vector_Object_Count: 2062
+Spatial_Reference_Information:
+  Horizontal_Coordinate_System_Definition:
+    Planar:
+      Grid_Coordinate_System:
+        Grid_Coordinate_System_Name: State Plane Coordinate System
+        State_Plane_Coordinate_System:
+          SPCS_Zone_Identifier: 4400
+          Transverse_Mercator:
+            Scale_Factor_at_Central_Meridian: 0.999964
+            Longitude_of_Central_Meridian: -72.500000
+            False_Easting: 500000.000000
+            False_Northing: 0.000000
+      Planar_Coordinate_Information:
+        Planar_Coordinate_Encoding_Method: coordinate pair
+        Coordinate_Representation:
+          Abscissa_Resolution: 0.001
+          Ordinate_Resolution: 0.001
+        Planar_Distance_Units: Meters
+    Geodetic_Model:
+      Horizontal_Datum_Name: North American Datum of 1983
+      Ellipsoid_Name: Geodetic Reference System 80
+      Semi-major_Axis: 6378137
+      Denominator_of_Flattening_Ratio: 1 / 298.25722210
+Entity_and_Attribute_Information:
+  Detailed_Description:
+    Entity_Type:
+      Entity_Type_Label: 
+    Attribute:
+      Attribute_Label: 
+      Attribute_Definition: 
+      Attribute_Definition_Source: ESRI
+      Attribute_Domain_Values:
+        Unrepresentable_Domain:
+Distribution_Information:
+  Distributor:
+    Contact_Information:
+      Contact_Organization_Primary:
+        Contact_Organization: VT Center for Geographic Information
+      Contact_Address:
+        Address_Type: Mailing and Physical Address
+        Address: 1 National Life Dr., Davis Building, 6th Floor
+        City: Montpelier
+        State_or_Province: VT
+        Postal_Code: 05620-0501
+        Country: USA
+      Contact_Voice_Telephone: 802/882-3002
+      Contact_TDD/TTY_Telephone: None
+      Contact_Facsimile_Telephone: 802/828-3383
+      Contact_Electronic_Mail_Address: accd.vcgiinfo@vermont.gov
+      Hours_of_Service: 9am - 5pm, M-F
+  Resource_Description: layername
+  Distribution_Liability: VCGI and the State of Vermont make no representations of any kind, including but not limited to the warranties of merchantability or fitness for a particular use, nor are any such warranties to be implied with respect to the data.
+  Standard_Order_Process:
+    Digital_Form:
+      Digital_Transfer_Information:
+        Format_Name: SHP
+        Format_Specification: ESRI Shapefile format
+        Format_Information_Content: geospatial data
+        File_Decompression_Technique: ZIP extraction tool
+      Digital_Transfer_Option:
+        Online_Option:
+          Computer_Contact_Information:
+            Network_Address:
+              Network_Resource_Name: http://maps.vcgi.vermont.gov/gisdata/vcgi/packaged_zips/DemoEconomic_JOBCOUNTHEX.zip
+          Access_Instructions: Download from web site.
+        Offline_Option:
+          Offline_Media: USB drive
+    Fees: No charge when downloading from the internet, and when no custom processing is required.
+    Ordering_Instructions: Send an email describing data request to accd.vcgiinfo@vermont.gov
+    Turnaround: About 5 days.
+  Custom_Order_Process: Send an email describing data request to accd.vcgiinfo@vermont.gov
+  Technical_Prerequisites: GIS Software
+  Available_Time_Period:
+    Time_Period_Information:
+      Single_Date/Time:
+        Calendar_Date: 20170914
+        Time_of_Day: Unknown
+Metadata_Reference_Information:
+  Metadata_Date: 20170914
+  Metadata_Contact:
+    Contact_Information:
+      Contact_Organization_Primary:
+        Contact_Organization: VT Center for Geographic Information
+        Contact_Person: GIS Database Administrator
+      Contact_Address:
+        Address_Type: Mailing and Physical Address
+        Address: 1 National Life Dr., Davis Building, 6th Floor
+        City: Montpelier
+        State_or_Province: VT
+        Postal_Code: 05620-0501
+        Country: USA
+      Contact_Voice_Telephone: 802/882-3002
+      Contact_TDD/TTY_Telephone: None
+      Contact_Facsimile_Telephone: 802/828-3383
+  Metadata_Standard_Name: FGDC Content Standards for Digital Metadata
+  Metadata_Standard_Version: FGDC-STD-001-1998
+  Metadata_Time_Convention: Local time
+  Metadata_Access_Constraints: None
+  Metadata_Use_Constraints: None
+  Metadata_Security_Information:
+    Metadata_Security_Classification_System: N/A
+    Metadata_Security_Classification: Unclassified
+    Metadata_Security_Handling_Description: No security considerations
