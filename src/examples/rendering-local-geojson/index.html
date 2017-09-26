@@ -213,7 +213,7 @@
             });
 
 
-            const popupTemplate = "<div><p>MU Name: <strong>{MUNAME}</strong></p>" +
+            const popupTemplateContent = "<div><p>MU Name: <strong>{MUNAME}</strong></p>" +
                 "<p>Spatial Ver: <strong>{SPATIALVER}: }</strong></p>" +
                 "<p>MU Symbol: <strong>{MUSYM}</strong></p>" +
                 "<p>MU Key : <strong>{MUKEY}</strong></p>" +
@@ -241,8 +241,7 @@
                 "<p>Water Kind: <strong>{WATERKIND}</strong></p>" +
                 "<p>T Factor : <strong>{TFACTOR}</strong></p>" +
                 "<p>Date Downloaded : <strong>{date_downl}</strong></p>" +
-                "<p>Kw : <strong>{Kw}</strong></p>" +
-                "<p>Geometry : <strong>{geometry}</strong></p></div>";
+                "<p>Kw : <strong>{Kw}</strong></p></div>";
 
 
 
@@ -263,7 +262,7 @@
 
                             let popupTemplate = new PopupTemplate();
                             popupTemplate.title = "{MUKEY}";
-                            popupTemplate.content = popupTemplate;
+                            popupTemplate.content = popupTemplateContent;
 
                             const fillSymbol = new SimpleFillSymbol({
                                 color: [255, 255, 255, 0],
