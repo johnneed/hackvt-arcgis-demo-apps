@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "build": "node build.js",
-    "start": "node init.js"
+    "start": "node serer.js"
   },
   "keywords": [
     "arcgis",
@@ -15,7 +15,10 @@
   "author": "John Need",
   "license": "ISC",
   "devDependencies": {
+    "babel-eslint": "^8.0.1",
     "eslint": "^4.3.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-react": "^7.4.0",
     "mime": "^1.3.6",
     "node-sass": "^4.5.3",
     "opn": "^5.1.0",

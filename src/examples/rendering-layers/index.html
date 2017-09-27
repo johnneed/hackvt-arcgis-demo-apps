@@ -157,7 +157,7 @@
             esriConfig.request.corsEnabledServers.push("maps.vcgi.vermont.gov");
             esriConfig.request.corsEnabledServers.push("anrmaps.vermont.gov");
             esriConfig.request.corsEnabledServers.push("vtransmap01.aot.state.vt.us");
-
+            esriConfig.request.corsEnabledServers.push("maps.vtrans.vermont.gov");
 
             /** BOUNDRIES **/
 
@@ -291,9 +291,9 @@
 
             /** ROADS **/
 
-                // Road Centerlines
-            var roadCenterlines = new FeatureLayer({
-                    id: "roadCenterlines",
+                // Road Center Lines
+            var roadCenterLines = new FeatureLayer({
+                    id: "roadCenterLines",
                     visible: false,
                     url: "http://vtransmap01.aot.state.vt.us/arcgis/rest/services/Master/General/FeatureServer/39/query?outFields=*&where=1%3D1"
                 });
@@ -376,7 +376,7 @@
 
             // Create a Map
             var map = new Map({
-                basemap: "oceans",
+                basemap: "streets",
                 layers: [
                     townBoundries,
                     countyBoundries,
@@ -392,7 +392,7 @@
                     floodplains,
                     lakeChamplainBathymetry,
                     bedrockGeologicMap,
-                    roadCenterlines,
+                    roadCenterLines,
                     averageDailyTraffic,
                     roadsideHistoricMarkers,
                     trails,
@@ -437,7 +437,7 @@
             document.getElementById("floodplains").addEventListener("change", _toggleLayerVisiblity(floodplains));
             document.getElementById("lakeChamplainBathymetry").addEventListener("change", _toggleLayerVisiblity(lakeChamplainBathymetry));
             document.getElementById("bedrockGeologicMap").addEventListener("change", _toggleLayerVisiblity(bedrockGeologicMap));
-            document.getElementById("roadCenterlines").addEventListener("change", _toggleLayerVisiblity(roadCenterlines));
+            document.getElementById("roadCenterLines").addEventListener("change", _toggleLayerVisiblity(roadCenterLines));
             document.getElementById("averageDailyTraffic").addEventListener("change", _toggleLayerVisiblity(averageDailyTraffic));
             document.getElementById("roadsideHistoricMarkers").addEventListener("change", _toggleLayerVisiblity(roadsideHistoricMarkers));
             document.getElementById("trails").addEventListener("change", _toggleLayerVisiblity(trails));
@@ -474,7 +474,7 @@
             <label><input type="checkbox" id="floodplains"><span>Floodplains</span></label>
             <label><input type="checkbox" id="lakeChamplainBathymetry"><span>Lake Champlain Bathymetry</span></label>
             <label><input type="checkbox" id="bedrockGeologicMap"><span>Bedrock Geologic Map</span></label>
-            <label><input type="checkbox" id="roadCenterlines"><span>Road Center-Lines</span></label>
+            <label><input type="checkbox" id="roadCenterLines"><span>Road Center-Lines</span></label>
             <label><input type="checkbox" id="averageDailyTraffic"><span>Average Daily Traffic</span></label>
             <label><input type="checkbox" id="roadsideHistoricMarkers"><span>Roadside Historic Markers</span></label>
             <label><input type="checkbox" id="trails"><span>Trails</span></label>
