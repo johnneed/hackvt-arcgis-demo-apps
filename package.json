@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "build": "node build.js",
-    "start": "node serer.js"
+    "start": "node server.js"
   },
   "keywords": [
     "arcgis",
