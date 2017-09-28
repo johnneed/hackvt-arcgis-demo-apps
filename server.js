@@ -1,5 +1,5 @@
 const http = require("http");
-const port = 8080;
+const port = 80;
 const url = require("url");
 const path = require("path");
 const fs = require("fs");
