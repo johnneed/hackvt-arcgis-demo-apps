@@ -6,10 +6,11 @@ const fs = require("fs");
 const mime = require("mime");
 const distPath = "dist";
 
+
 http.createServer((request, response) => {
 
-    const uri = `${distPath}/${url.parse(request.url).pathname}`;
-    let filename = path.join(process.cwd(), uri);
+    var uri = `${distPath}/${url.parse(request.url).pathname}`;
+    var filename = path.join(process.cwd(), uri);
 
     fs.exists(filename, (exists) => {
         if (!exists) {
