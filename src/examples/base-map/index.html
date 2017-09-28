@@ -22,7 +22,7 @@
             height: 100vh;
             width: 100vw;
         }
-
+        
         h1 {
             font-size: 2.4rem;
             height: 5rem;
@@ -34,7 +34,7 @@
             background: #020202;
             color: #EFEFEF;
         }
-
+        
         .flex-container {
             height: calc(100vh - 5rem);
             width: 100vw;
@@ -59,7 +59,7 @@
             -ms-flex-align: start;
             align-items: flex-start;
         }
-
+        
         #layerToggle {
             -webkit-order: 0;
             -ms-flex-order: 0;
@@ -72,7 +72,7 @@
             align-self: stretch;
             overflow-y: auto;
         }
-
+        
         #layerToggle .scroll-container label {
             cursor: pointer;
             font-size: 1rem;
@@ -98,11 +98,11 @@
             -ms-flex-align: start;
             align-items: flex-start;
         }
-
+        
         #layerToggle .scroll-container label:hover {
             background: rgba(0, 255, 200, 0.5);
         }
-
+        
         #layerToggle .scroll-container label input {
             border: solid 1px #AAA;
             border-radius: 2px;
@@ -116,7 +116,7 @@
             -ms-flex-item-align: center;
             align-self: center;
         }
-
+        
         #layerToggle .scroll-container label span {
             -webkit-order: 0;
             -ms-flex-order: 0;
@@ -128,7 +128,7 @@
             -ms-flex-item-align: center;
             align-self: center;
         }
-
+        
         #viewDiv {
             -webkit-order: 1;
             -ms-flex-order: 1;
@@ -144,94 +144,100 @@
 </head>
 
 <body>
-<h1>Loading Local GeoJSON Files with a Custom Base Map Demo</h1>
-<div class="flex-container">
-    <aside id="layerToggle">
-        <div class="scroll-container">
-            <label><input type="checkbox" id="twoMileHexes" checked><span>Two Mile Wide Hex Grid</span></label>
-            <label><input type="checkbox" id="jobCountHexes"><span>Hexes with Job Count</span></label>
-            <label><input type="checkbox" id="populationHexes"><span>Hexes with Population</span></label>
+    <h1>Loading Local GeoJSON Files with a Custom Base Map Demo</h1>
+    <div class="flex-container">
+        <aside id="layerToggle">
+            <div class="scroll-container">
+                <label><input type="radio" name="hexlayers" id="twoMileHexes" checked><span>Two Mile Wide Hex Grid</span></label>
+                <label><input  type="radio" name="hexlayers"  id="jobCountHexes"><span>Hexes with Job Count</span></label>
+                <label><input  type="radio" name="hexlayers"  id="populationHexes"><span>Hexes with Population</span></label>
 
-        </div>
-    </aside>
-    <main id="viewDiv"></main>
-</div>
-<script src="https://js.arcgis.com/4.4/"></script>
-<script>
-    require([
-        "esri/Map",
-        "esri/views/MapView",
-        "esri/Basemap",
-        "esri/layers/WebTileLayer",
-        "esri/geometry/Polygon",
-        "esri/layers/GraphicsLayer",
-        "esri/Graphic",
-        "esri/symbols/SimpleFillSymbol",
-        "esri/PopupTemplate",
-        "dojo/domReady!"
-    ], function (Map, MapView, Basemap, WebTileLayer, Polygon, GraphicsLayer, Graphic, SimpleFillSymbol, PopupTemplate) {
+            </div>
+        </aside>
+        <main id="viewDiv"></main>
+    </div>
+    <script src="https://js.arcgis.com/4.4/"></script>
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/Basemap",
+            "esri/layers/WebTileLayer",
+            "esri/geometry/Polygon",
+            "esri/layers/GraphicsLayer",
+            "esri/layers/FeatureLayer",
+            "esri/Graphic",
+            "esri/symbols/SimpleFillSymbol",
+            "esri/PopupTemplate",
+            "esri/renderers/SimpleRenderer",
+            "dojo/domReady!"
+        ], function(Map, MapView, Basemap, WebTileLayer, Polygon, GraphicsLayer, FeatureLayer, Graphic, SimpleFillSymbol, PopupTemplate, SimpleRenderer) {
 
-        // SETUP LAYER CONTROLS
+            // SETUP LAYER CONTROLS
+            let layers = [];
 
-        function _toggleLayerVisiblity(mapLayer) {
-            return (event) => {
-                mapLayer.visible = event.target.checked;
-            };
-        }
-
-
-
-        /** LOADING LOCAL GEOJSON  AS LAYERS **/
-
-        const mapBaseLayer = new WebTileLayer({
-            urlTemplate: "http://{subDomain}.tile.stamen.com/terrain/{level}/{col}/{row}.png",
-            subDomains: ["a", "b", "c", "d"],
-            copyright: "Map tiles by <a href=\"http://stamen.com/\">Stamen Design</a>, " +
-            "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>. " +
-            "Data by <a href=\"http://openstreetmap.org/\">OpenStreetMap</a>, " +
-            "under <a href=\"http://creativecommons.org/licenses/by-sa/3.0\">CC BY SA</a>."
-        });
-
-        // Create a Basemap with the WebTileLayer. The thumbnailUrl will be used for
-        // the image in the BasemapToggle widget.
-        const stamen = new Basemap({
-            baseLayers: [mapBaseLayer],
-            title: "Terrain",
-            id: "terrain",
-            thumbnailUrl: "https://stamen-tiles.a.ssl.fastly.net/terrain/10/177/409.png"
-        });
-
-        const map = new Map({
-            basemap: stamen
-        });
-
-        const view = new MapView({
-            container: "viewDiv", // Reference to the DOM node that will contain the view
-            map: map, // References the map object
-            center: [-72.2053226, 43.9556482],
-            zoom: 8
-        });
+            function _toggleLayerVisiblity(mapLayer) {
+                return (event) => {
+                    console.log('turning on visiblity for ' + event.target.id);
+                    layers.forEach(layer => {
+                        layer.visible = (layer === mapLayer);
+                    });
+                };
+            }
 
 
 
+            /** LOADING LOCAL GEOJSON  AS LAYERS **/
 
-        /*                    Hexagon Data Sources                              */
-        /* Data files were downloaded from VCGI Open Portal as shape files      */
-        /* Then QGis was used to convert them to geojson                        */
-        /* The geojson needs lat and long so they were saved as CSR EPSG:4326   */
-        /* file extensions were changed to .json so they could be easily served */
+            const mapBaseLayer = new WebTileLayer({
+                urlTemplate: "http://{subDomain}.tile.stamen.com/terrain/{level}/{col}/{row}.png",
+                subDomains: ["a", "b", "c", "d"],
+                copyright: "Map tiles by <a href=\"http://stamen.com/\">Stamen Design</a>, " +
+                    "under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>. " +
+                    "Data by <a href=\"http://openstreetmap.org/\">OpenStreetMap</a>, " +
+                    "under <a href=\"http://creativecommons.org/licenses/by-sa/3.0\">CC BY SA</a>."
+            });
+
+            // Create a Basemap with the WebTileLayer. The thumbnailUrl will be used for
+            // the image in the BasemapToggle widget.
+            const stamen = new Basemap({
+                baseLayers: [mapBaseLayer],
+                title: "Terrain",
+                id: "terrain",
+                thumbnailUrl: "https://stamen-tiles.a.ssl.fastly.net/terrain/10/177/409.png"
+            });
+
+            const map = new Map({
+                basemap: stamen
+            });
+
+            const view = new MapView({
+                container: "viewDiv", // Reference to the DOM node that will contain the view
+                map: map, // References the map object
+                center: [-72.2053226, 43.9556482],
+                zoom: 8
+            });
 
 
-        // VT Hexagonal Grid of 2-Square-Mile Hexagons Covering State
-        fetch('data/hexagons.json') // Fetch is unsupported in IE.
-            .then(
-                response => response.json()
+
+
+            /*                    Hexagon Data Sources                              */
+            /* Data files were downloaded from VCGI Open Portal as shape files      */
+            /* Then QGis was used to convert them to geojson                        */
+            /* The geojson needs lat and long so they were saved as CSR EPSG:4326   */
+            /* file extensions were changed to .json so they could be easily served */
+
+
+            // VT Hexagonal Grid of 2-Square-Mile Hexagons Covering State
+            fetch('data/hexagons.json') // Fetch is unsupported in IE.
+                .then(
+                    response => response.json()
                     .then(
                         (hexagons) => {
 
                             let popupTemplate = new PopupTemplate();
-                            popupTemplate.title = "Hex Grid {id}";
-                            popupTemplate.content = "<p>Hex-Grid <b>{id}</b></p>";
+                            popupTemplate.title = "Hex Grid {GRID_ID}";
+                            popupTemplate.content = "<p>Hex-Grid <b>{GRID_ID}</b></p>";
 
                             const fillSymbol = new SimpleFillSymbol({
                                 color: [255, 255, 255, 0],
@@ -246,9 +252,9 @@
                                     geometry: new Polygon({
                                         rings: feature.geometry.coordinates[0]
                                     }),
-                                    attributes: {id: feature.properties.GRID_ID},
+                                    attributes: feature.properties,
                                     symbol: fillSymbol,
-                                    popupTemplate : popupTemplate
+                                    popupTemplate: popupTemplate
                                 })
                             );
 
@@ -256,23 +262,30 @@
                                 graphics: hexGraphics,
                                 visible: true
                             });
+                            map.add(hexagonGrid);
+                            layers.push(hexagonGrid);
                             document.getElementById("twoMileHexes").addEventListener("change", _toggleLayerVisiblity(hexagonGrid));
-                            map.add(hexagonGrid);
+
                         })
-            );
+                );
 
 
-        // VT Hexagonal grid of Population Counts (2010)
-        fetch('data/hexagons-population.json') // Fetch is unsupported in IE.
-            .then(
-                response => response.json()
+
+
+
+
+
+            // VT Hexagonal grid of Population Counts (2010)
+            fetch('data/hexagons-population.json') // Fetch is unsupported in IE.
+                .then(
+                    response => response.json()
                     .then(
                         (hexagons) => {
 
 
                             let popupTemplate = new PopupTemplate();
-                            popupTemplate.title = "Hex Grid {id}";
-                            popupTemplate.content = "<p>Population <b>{population}</b></p>";
+                            popupTemplate.title = "Hex Grid {GRID_ID}";
+                            popupTemplate.content = "<p>Population <b>{POP_2010}</b></p>";
 
                             const fillSymbol = new SimpleFillSymbol({
                                 color: [255, 255, 255, 0],
@@ -282,38 +295,81 @@
                                 }
                             });
 
+
+                            const renderer = new SimpleRenderer({
+
+                                symbol: fillSymbol,
+                                label: "Population",
+                                visualVariables: [{
+                                    type: "color", // indicates this is a color visual variable
+                                    field: "POP_2010", // total population in hex
+                                    // normalizationField: "POP_2010", // total population
+                                    stops: [{
+                                        value: 0, // features with a population of  0 
+                                        color: [255, 255, 242, 0.4], // will be assiged this color (beige)
+                                        label: "0" // label to display in the legend
+                                    }, {
+                                        value: 1000, // features with pop > 1000  
+                                        color: [44, 6, 61, 0.7], // will be assigned this color (purple)
+                                        label: "1000 or higher" // label to display in the legend
+                                    }]
+
+                                    // features with values between 10 - 500 will be assigned
+                                    // a color on a ramp between beige and purple proportional
+                                    // to where the value falls between 10 and 500
+
+                                }]
+                            });
+
+
+
                             const hexGraphics = hexagons.features.map((feature) =>
                                 new Graphic({
                                     geometry: new Polygon({
                                         rings: feature.geometry.coordinates[0]
                                     }),
-                                    attributes: {id: feature.properties.GRID_ID, population: feature.properties.POP_2010 },
-                                    symbol: fillSymbol,
-                                    popupTemplate : popupTemplate
+                                    attributes: feature.properties,
                                 })
                             );
 
-                            const hexagonGrid = new GraphicsLayer({
-                                graphics: hexGraphics,
-                                visible: false
+                            const hexagonPopulationGrid = new FeatureLayer({
+                                source: hexGraphics,
+                                visible: false,
+                                fields: [{
+                                    name: "GRID_ID",
+                                    alias: "GRID_ID",
+                                    type: "oid"
+                                }, {
+                                    name: "POP_2010",
+                                    alias: "POP_2010",
+                                    type: "number"
+                                }],
+                                objectIdField: "GRID_ID",
+                                geometryType: "polygon",
+                                spatialReference: {
+                                    wkid: 4326
+                                },
+                                popupTemplate: popupTemplate,
+                                renderer: renderer
                             });
 
-                            map.add(hexagonGrid);
-                            document.getElementById("populationHexes").addEventListener("change", _toggleLayerVisiblity(hexagonGrid));
+                            map.add(hexagonPopulationGrid);
+                            layers.push(hexagonPopulationGrid);
+                            document.getElementById("populationHexes").addEventListener("change", _toggleLayerVisiblity(hexagonPopulationGrid));
 
                         })
-            );
+                );
 
-        // VT Hexagonal grid of Job Counts
-        fetch('data/hexagons-job-count.json') // Fetch is unsupported in IE.
-            .then(
-                response => response.json()
+            // VT Hexagonal grid of Job Counts
+            fetch('data/hexagons-job-count.json') // Fetch is unsupported in IE.
+                .then(
+                    response => response.json()
                     .then(
                         (hexagons) => {
 
                             let popupTemplate = new PopupTemplate();
-                            popupTemplate.title = "Hex Grid {id}";
-                            popupTemplate.content = "<p>Job Count <b>{jobCount}</b></p>";
+                            popupTemplate.title = "Hex Grid {GRID_ID}";
+                            popupTemplate.content = "<p>Job Count <b>{JOBS_2014}</b></p>";
 
                             const fillSymbol = new SimpleFillSymbol({
                                 color: [255, 255, 255, 0],
@@ -323,26 +379,69 @@
                                 }
                             });
 
+
+                            const renderer = new SimpleRenderer({
+
+                                symbol: fillSymbol,
+                                label: "Job Count",
+                                visualVariables: [{
+                                    type: "color", // indicates this is a color visual variable
+                                    field: "JOBS_2014", // total jobs in hex
+                                    // normalizationField: "POP_2010", // total jobs
+                                    stops: [{
+                                        value: 0, // features with a jobs of  0 
+                                        color: [255, 255, 242, 0.4], // will be assiged this color (beige)
+                                        label: "0" // label to display in the legend
+                                    }, {
+                                        value: 1000, // features with pop > 1000  
+                                        color: [255, 0, 0, 0.7], // will be assigned this color (red)
+                                        label: "1000 or higher" // label to display in the legend
+                                    }]
+
+                                    // features with values between 0 - 1000 will be assigned
+                                    // a color on a ramp between beige and red proportional
+                                    // to where the value falls between 0 and 100
+
+                                }]
+                            });
+
+
+
                             const hexGraphics = hexagons.features.map((feature) =>
                                 new Graphic({
                                     geometry: new Polygon({
                                         rings: feature.geometry.coordinates[0]
                                     }),
-                                    attributes: {id: feature.properties.GRID_ID, jobCount: feature.properties.JOBS_2014},
-                                    symbol: fillSymbol,
-                                    popupTemplate : popupTemplate
+                                    attributes: feature.properties,
                                 })
                             );
 
-                            const hexagonGrid = new GraphicsLayer({
-                                graphics: hexGraphics,
-                                visible: false
+                            const jobCountHexes = new FeatureLayer({
+                                source: hexGraphics,
+                                visible: false,
+                                fields: [{
+                                    name: "GRID_ID",
+                                    alias: "GRID_ID",
+                                    type: "oid"
+                                }, {
+                                    name: "POP_2010",
+                                    alias: "POP_2010",
+                                    type: "number"
+                                }],
+                                objectIdField: "GRID_ID",
+                                geometryType: "polygon",
+                                spatialReference: {
+                                    wkid: 4326
+                                },
+                                popupTemplate: popupTemplate,
+                                renderer: renderer
                             });
 
-                            map.add(hexagonGrid);
-                            document.getElementById("jobCountHexes").addEventListener("change", _toggleLayerVisiblity(hexagonGrid));
+                            map.add(jobCountHexes);
+                            layers.push(jobCountHexes);
+                            document.getElementById("jobCountHexes").addEventListener("change", _toggleLayerVisiblity(jobCountHexes));
                         })
-            );
+                );
 
 
 
@@ -352,8 +451,8 @@
 
 
 
-    });
-</script>
+        });
+    </script>
 </body>
 
 </html>
