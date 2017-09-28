@@ -1,16 +1,15 @@
 const http = require("http");
-const port = 80;
+const port = 8080;
 const url = require("url");
 const path = require("path");
 const fs = require("fs");
 const mime = require("mime");
 const distPath = "dist";
 
-
 http.createServer((request, response) => {
 
-    var uri = `${distPath}/${url.parse(request.url).pathname}`;
-    var filename = path.join(process.cwd(), uri);
+    const uri = `${distPath}/${url.parse(request.url).pathname}`;
+    let filename = path.join(process.cwd(), uri);
 
     fs.exists(filename, (exists) => {
         if (!exists) {
