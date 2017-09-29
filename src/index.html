@@ -12,156 +12,198 @@
     <!-- Place favicon.ico in the root directory -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
-    <link href="css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" media="all" href="css/main.css">
     <script src="js/vendor/modernizr-custom.js"></script>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an outdated browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an outdated browser. Please <a href="http://browsehappy.com/">upgrade your
+    browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <nav class="mobile-nav">
-        <a class="header-link" href="http://www.hackvt.org/">HackVT Website</a>
-    </nav>
+<nav class="mobile-nav">
+    <a class="header-link" href="http://www.hackvt.org/">HackVT Website</a>
+</nav>
 
-    <div id="content">
-        <header>
-            <div class="left-header-stuff">
-                <a class="header-logo" href="http://www.hackvt.org">
+<div id="content">
+    <header>
+        <div class="left-header-stuff">
+            <a class="header-logo" href="http://www.hackvt.org">
                     <span class="small-logo">
-                            <img src="./img/HackVT-logo.svg" alt="HackVT logo" />
+                            <img src="./img/HackVT-logo.svg" alt="HackVT logo"/>
                         </span>
-                </a>
+            </a>
+        </div>
+        <div class="right-header-stuff">
+            <div id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="right-header-stuff">
-                <div id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <nav class="header-nav">
-                    <a class="header-link" href="http://www.hackvt.org/">HackVT Website</a>
-                </nav>
-            </div>
-        </header>
-        <div class="big-logo-container"></div>
-        <main>
-            <section>
-                <article class="documentation">
-                    <h2>Official Data-Sets</h2>
-                    <p>To qualify, your app must use at least one of the <a href="http://www.hackvt.org/datasets/">official data sets</a></p>
+            <nav class="header-nav">
+                <a class="header-link" href="http://www.hackvt.org/">HackVT Website</a>
+            </nav>
+        </div>
+    </header>
+    <div class="big-logo-container"></div>
+    <main>
+        <section>
+            <article class="documentation">
+                <h2>Official Data-Sets</h2>
+                <p>To qualify, your app must use at least one of the <a href="http://www.hackvt.org/datasets/">official
+                    data sets</a>. These sample applications demonstrate various JavaScript libraries with the official
+                    HackVT data-sets.</p>
 
+            </article>
+        </section>
+        <hr/>
+        <section>
+            <h2>Sample Applications</h2>
+            <div class="example-links">
+                <article class="demo-app-link base-map">
+                    <h4><i class="mdi mdi-language-javascript"></i><span>Example using:</span><a
+                        href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a></h4>
+
+                    <a href="examples/base-map/index.html" target="_blank"><img src="./img/base-map-screenshot.png"
+                                                                                alt="base map demo app screen shot"/></a>
+                    <span class="demo-app-title"> <a href="examples/base-map/index.html">Loading Local GeoJSON Files with a Custom Base Map Demo</a></span>
+                    <span class="demo-app-code-link"><a
+                        href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/base-map"
+                        target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                    <div class="demo-app-description">
+                        <p>An example of loading local geoJSON files as layers on top of a custom base map.</p>
+                        <p>This demo shows the distribution of jobs and population across Vermont.</p>
+                        <p>The hexagaon data set was downloaded from the VCGI Open Data Portal.</p>
+                        <p><a href="http://www.qgis.org/en/site/">QGIS</a> was then used to load the shape
+                            files (.shp) and convert them to geoJSON.</p>
+                        <p>To be useful, geojson needs to have its coordinates set to latitude and longitude so the
+                            files were saved using the Coordinate Reference System (CSR) EPSG:4326.
+                            File extensions were then changed to ".json" so they could be easily served</p>
+                    </div>
                 </article>
-            </section>
-            <hr/>
-            <section>
-                <h2>Sample Applications</h2>
-                <div class="example-links">
-                    <article class="demo-app-link base-map">
-                        <h4><i class="mdi mdi-language-javascript"></i><span>Example using:</span><a href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a></h4>
-
-                        <a href="examples/base-map/index.html" target="_blank"><img src="./img/base-map-screenshot.png" alt="base map demo app screen shot" /></a>
-                        <span class="demo-app-title"> <a  href="examples/base-map/index.html">Loading Local GeoJSON Files with a Custom Base Map Demo</a></span>
-                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/base-map"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                        <div class="demo-app-description">
-                            <p>An example of loading local geoJSON file using a custom base map using ArcGIS API 4.4 for JavaScript v4.4<a href="https://www.gislounge.com/basemaps-defined/">(What is a base map?)</a></p>
-                        </div>
-                    </article>
-                    <article class="demo-app-link rendering-layers">
-                        <h4><i class="mdi mdi-language-javascript"></i><span>Example using:</span><a href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a></h4>
+                <article class="demo-app-link rendering-layers">
+                    <h4><i class="mdi mdi-language-javascript"></i><span>Example using:</span><a
+                        href="https://developers.arcgis.com/javascript/">ArcGIS API for JavaScript</a></h4>
 
 
-                        <a href="examples/rendering-layers/index.html" target="_blank"><img src="./img/rendering-layers-screen-shot.png" alt="simple map demo app screen shot" /></a>
-                        <span class="demo-app-title"> <a  href="examples/rendering-layers/index.html">Rendering the HackVT Data Sets as Map Layers</a></span>
-                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/rendering-layers"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                        <div class="demo-app-description">
+                    <a href="examples/rendering-layers/index.html" target="_blank"><img
+                        src="./img/rendering-layers-screen-shot.png" alt="simple map demo app screen shot"/></a>
+                    <span class="demo-app-title"> <a href="examples/rendering-layers/index.html">Rendering the HackVT Data Sets as Map Layers</a></span>
+                    <span class="demo-app-code-link"><a
+                        href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/rendering-layers"
+                        target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                    <div class="demo-app-description">
 
-                            <p>A demonstration of rendering each official HackVT dataset using ArcGIS API for JavaScript v4.4.</p>
-                            <p></p>
-                        </div>
-                    </article>
+                        <p>A demonstration of rendering each official HackVT dataset available via API.</p>
+                        <p>Both FeatureLayers and ImageryLayers were used</p>
+                    </div>
+                </article>
 
-                    <article class="demo-app-link mapbox">
-                        <h4><i class="mdi mdi-language-javascript"></i><span>Example using:</span><a href="https://www.mapbox.com/">MapBox</a></h4>
-                        <a href="examples/mapbox" target="_blank"><img src="./img/mapbox-screen-shot.png" alt="mapbox demo app screen shot" /></a>
-                        <span class="demo-app-title"> <a  href="examples/mapbox">An app hosted on Mapbox created with Mapbox-GL</a></span>
-                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/mapbox"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                        <div class="demo-app-description">
+                <article class="demo-app-link mapbox">
+                    <h4><i class="mdi mdi-language-javascript"></i><span>Example using:</span><a
+                        href="https://www.mapbox.com/">MapBox</a></h4>
+                    <a href="examples/mapbox" target="_blank"><img src="./img/mapbox-screen-shot.png"
+                                                                   alt="mapbox demo app screen shot"/></a>
+                    <span class="demo-app-title"> <a href="examples/mapbox">An app hosted on Mapbox created with Mapbox-GL</a></span>
+                    <span class="demo-app-code-link"><a
+                        href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/mapbox"
+                        target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                    <div class="demo-app-description">
 
-                            <p>I wanted a map showing the age of Burlington buildings (inspired by <a href="http://cityhubla.github.io/LA_Building_Age/#12/34.0267/-118.2621">Age of LA</a>).
-                            </p>
-                            <p>
-                                <strong>Data Sources:</strong> A shapefile containing Vermont building outlines was found
-                                <a href="http://download.geofabrik.de/north-america/us/vermont.html">here</a>, and property information containing the year built was found on the <a href="https://data.burlingtonvt.gov/City-Hall/Map-City-of-Burlington-Property-Details/4jui-2fjw">Burlington City Data Portal</a>.
-                                These were further processed and joined together using Excel and qGIS.
-                            </p>
-                            <p>
-                                <strong>Map Style:</strong> In mapbox I created a style and uploaded this shapefile as a tileset. Then I added the tileset as a layer, and to the right of the layer -> Style -> Color select there is a steps icon which allows
-                                you to color buildings differently according to a property.
-                            </p>
-                            <p>
-                                <strong>Additional Info &amp; Interactivity:</strong> Back in the web page where I display this map, I used JavaScript to get the map style information and use it to create a legend and show building year information.
-                            </p>
-                        </div>
-                    </article>
-                    <article class="demo-app-link leaflet">
-                        <h4><i class="mdi mdi-language-javascript"></i>
-                            <span>Example using:</span><a href="http://leafletjs.com/">Leaflet</a>
-                        </h4>
+                        <p>I wanted a map showing the age of Burlington buildings (inspired by <a
+                            href="http://cityhubla.github.io/LA_Building_Age/#12/34.0267/-118.2621">Age of LA</a>).
+                        </p>
+                        <p>
+                            <strong>Data Sources:</strong> A shapefile containing Vermont building outlines was found
+                            <a href="http://download.geofabrik.de/north-america/us/vermont.html">here</a>, and property
+                            information containing the year built was found on the <a
+                            href="https://data.burlingtonvt.gov/City-Hall/Map-City-of-Burlington-Property-Details/4jui-2fjw">Burlington
+                            City Data Portal</a>.
+                            These were further processed and joined together using Excel and qGIS.
+                        </p>
+                        <p>
+                            <strong>Map Style:</strong> In mapbox I created a style and uploaded this shapefile as a
+                            tileset. Then I added the tileset as a layer, and to the right of the layer -> Style ->
+                            Color select there is a steps icon which allows
+                            you to color buildings differently according to a property.
+                        </p>
+                        <p>
+                            <strong>Additional Info &amp; Interactivity:</strong> Back in the web page where I display
+                            this map, I used JavaScript to get the map style information and use it to create a legend
+                            and show building year information.
+                        </p>
+                    </div>
+                </article>
+                <article class="demo-app-link leaflet">
+                    <h4><i class="mdi mdi-language-javascript"></i>
+                        <span>Example using:</span><a href="http://leafletjs.com/">Leaflet</a>
+                    </h4>
 
-                        <a href="examples/leaflet/index.html" target="_blank"><img src="./img/leaflet.png" alt="leaflet demo app screen shot" /></a>
-                        <span class="demo-app-title"> <a  href="examples/leaflet/index.html">One layer of data in Leaflet.js</a></span>
-                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/leaflet"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                        <div class="demo-app-description">
+                    <a href="examples/leaflet/index.html" target="_blank"><img src="./img/leaflet.png"
+                                                                               alt="leaflet demo app screen shot"/></a>
+                    <span class="demo-app-title"> <a
+                        href="examples/leaflet/index.html">One layer of data in Leaflet.js</a></span>
+                    <span class="demo-app-code-link"><a
+                        href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/leaflet"
+                        target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                    <div class="demo-app-description">
 
-                            <p>
-                                <strong>Data Sources:</strong> A shapefile containing Vermont building outlines was found
-                                <a href="http://download.geofabrik.de/north-america/us/vermont.html">here</a>, and property information containing the year built was found on the <a href="https://data.burlingtonvt.gov/City-Hall/Map-City-of-Burlington-Property-Details/4jui-2fjw">Burlington City Data Portal</a>.
-                                These were further processed and joined together using Excel and qGIS.
-                            </p>
-                            <p>
-                                <strong>Map Style:</strong> This was almost entirely styled with leaflet.js built-in options, and one custom function getColor, which applies a color to the building based on its YearBuilt property.
-                            </p>
-                            <p>
-                                <strong>Additional Info &amp; Interactivity:</strong> Leaflet.js has built in functions for creating controls, which I used. The onEachFeature function adds the highlighting and year display for each building.
-                            </p>
-                        </div>
-                    </article>
-                    <article class="demo-app-link leaflet">
-                        <h4><i class="mdi mdi-language-javascript"></i> <span>Example using:</span><a href="http://leafletjs.com/">Leaflet</a>
-                        </h4>
+                        <p>
+                            <strong>Data Sources:</strong> A shapefile containing Vermont building outlines was found
+                            <a href="http://download.geofabrik.de/north-america/us/vermont.html">here</a>, and property
+                            information containing the year built was found on the <a
+                            href="https://data.burlingtonvt.gov/City-Hall/Map-City-of-Burlington-Property-Details/4jui-2fjw">Burlington
+                            City Data Portal</a>.
+                            These were further processed and joined together using Excel and qGIS.
+                        </p>
+                        <p>
+                            <strong>Map Style:</strong> This was almost entirely styled with leaflet.js built-in
+                            options, and one custom function getColor, which applies a color to the building based on
+                            its YearBuilt property.
+                        </p>
+                        <p>
+                            <strong>Additional Info &amp; Interactivity:</strong> Leaflet.js has built in functions for
+                            creating controls, which I used. The onEachFeature function adds the highlighting and year
+                            display for each building.
+                        </p>
+                    </div>
+                </article>
+                <article class="demo-app-link leaflet">
+                    <h4><i class="mdi mdi-language-javascript"></i> <span>Example using:</span><a
+                        href="http://leafletjs.com/">Leaflet</a>
+                    </h4>
 
-                        <a href="examples/leafletLayers/index.html" target="_blank"><img src="./img/leafletLayers.png" alt="mapbox demo app screen shot" /></a>
-                        <span class="demo-app-title"> <a  href="examples/leafletLayers/index.html">Multiple layers in Leaflet.js</a></span>
-                        <span class="demo-app-code-link"><a href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/leafletLayers"  target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
-                        <div class="demo-app-description">
+                    <a href="examples/leafletLayers/index.html" target="_blank"><img src="./img/leafletLayers.png"
+                                                                                     alt="mapbox demo app screen shot"/></a>
+                    <span class="demo-app-title"> <a href="examples/leafletLayers/index.html">Multiple layers in Leaflet.js</a></span>
+                    <span class="demo-app-code-link"><a
+                        href="https://github.com/johnneed/hackvt-arcgis-demo-apps/tree/master/src/examples/leafletLayers"
+                        target="_blank">&lt;view&gt;the code&lt;/view&gt;</a></span>
+                    <div class="demo-app-description">
 
-                            <p>
-                                <strong>Data Sources:</strong> This uses the same data as the other Burlington Buildings apps. I create seven layers by using a filter function to extract the different segments from the same geojson data.
-                            </p>
-                            <p>
-                                <strong>Map Style:</strong> Each layer is given a different color as it is added to the map. Most of the styling is the leaflet.js defaults.
-                            </p>
-                            <p>
-                                <strong>Additional Info &amp; Interactivity:</strong> The layer toggling legend/control was created entirely by leaflet.js.
-                            </p>
-                        </div>
-                    </article>
-                </div>
-            </section>
-        </main>
-    </div>
+                        <p>
+                            <strong>Data Sources:</strong> This uses the same data as the other Burlington Buildings
+                            apps. I create seven layers by using a filter function to extract the different segments
+                            from the same geojson data.
+                        </p>
+                        <p>
+                            <strong>Map Style:</strong> Each layer is given a different color as it is added to the map.
+                            Most of the styling is the leaflet.js defaults.
+                        </p>
+                        <p>
+                            <strong>Additional Info &amp; Interactivity:</strong> The layer toggling legend/control was
+                            created entirely by leaflet.js.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+</div>
 
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
-    </script>
-
-    <script src="js/main.bundle.js"></script>
-    </script>
 </body>
 
-</html>
+< /html>

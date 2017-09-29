@@ -22,7 +22,7 @@
             height: 100vh;
             width: 100vw;
         }
-        
+
         h1 {
             font-size: 2.4rem;
             height: 5rem;
@@ -34,7 +34,7 @@
             background: #020202;
             color: #EFEFEF;
         }
-        
+
         .flex-container {
             height: calc(100vh - 5rem);
             width: 100vw;
@@ -59,7 +59,7 @@
             -ms-flex-align: start;
             align-items: flex-start;
         }
-        
+
         #layerToggle {
             -webkit-order: 0;
             -ms-flex-order: 0;
@@ -72,7 +72,7 @@
             align-self: stretch;
             overflow-y: auto;
         }
-        
+
         #layerToggle .scroll-container label {
             cursor: pointer;
             font-size: 1rem;
@@ -98,11 +98,11 @@
             -ms-flex-align: start;
             align-items: flex-start;
         }
-        
+
         #layerToggle .scroll-container label:hover {
             background: rgba(0, 255, 200, 0.5);
         }
-        
+
         #layerToggle .scroll-container label input {
             border: solid 1px #AAA;
             border-radius: 2px;
@@ -116,7 +116,7 @@
             -ms-flex-item-align: center;
             align-self: center;
         }
-        
+
         #layerToggle .scroll-container label span {
             -webkit-order: 0;
             -ms-flex-order: 0;
@@ -128,7 +128,7 @@
             -ms-flex-item-align: center;
             align-self: center;
         }
-        
+
         #viewDiv {
             -webkit-order: 1;
             -ms-flex-order: 1;
@@ -224,7 +224,7 @@
             /*                    Hexagon Data Sources                              */
             /* Data files were downloaded from VCGI Open Portal as shape files      */
             /* Then QGis was used to convert them to geojson                        */
-            /* The geojson needs lat and long so they were saved as CSR EPSG:4326   */
+            /* The geojson needs lat and long so they were saved as CRS EPSG:4326   */
             /* file extensions were changed to .json so they could be easily served */
 
 
@@ -305,11 +305,11 @@
                                     field: "POP_2010", // total population in hex
                                     // normalizationField: "POP_2010", // total population
                                     stops: [{
-                                        value: 0, // features with a population of  0 
+                                        value: 0, // features with a population of  0
                                         color: [255, 255, 242, 0.4], // will be assiged this color (beige)
                                         label: "0" // label to display in the legend
                                     }, {
-                                        value: 1000, // features with pop > 1000  
+                                        value: 1000, // features with pop > 1000
                                         color: [44, 6, 61, 0.7], // will be assigned this color (purple)
                                         label: "1000 or higher" // label to display in the legend
                                     }]
@@ -389,11 +389,11 @@
                                     field: "JOBS_2014", // total jobs in hex
                                     // normalizationField: "JOBS_2014", // total jobs
                                     stops: [{
-                                        value: 0, // features with a jobs of  0 
+                                        value: 0, // features with a jobs of  0
                                         color: [255, 255, 242, 0.4], // will be assiged this color (beige)
                                         label: "0" // label to display in the legend
                                     }, {
-                                        value: 1000, // features with job count > 1000  
+                                        value: 1000, // features with job count > 1000
                                         color: [255, 0, 0, 0.7], // will be assigned this color (red)
                                         label: "1000 or higher" // label to display in the legend
                                     }]
